@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ns-mini-printers" />
         <module name="SampleNFCePrint" />
+        <module name="ns-mini-printers" />
       </profile>
     </annotationProcessing>
   </component>

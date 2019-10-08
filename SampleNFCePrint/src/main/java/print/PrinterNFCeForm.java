@@ -2,7 +2,6 @@ package print;
 
 import br.eti.ns.nsminiprinters.escpos.PrinterOptions;
 import commons.PrinterParameters;
-import jssc.SerialPortException;
 import type.DetailType;
 import type.ProductsLines;
 import type.YesNoType;
