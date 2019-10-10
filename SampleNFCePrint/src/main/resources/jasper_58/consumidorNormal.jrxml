@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consumidorNormal" pageWidth="123" pageHeight="39" columnWidth="123" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="dadd6bbe-6995-43ac-96a4-fbd42c703e2b">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="infNFe.dest.CPF" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/CPF]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.xNome" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/xNome]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.CNPJ" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/CNPJ]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xLgr" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xLgr]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.nro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/nro]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xCpl" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xCpl]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xBairro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xBairro]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xMun" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xMun]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.UF" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/UF]]></fieldDescription>
+	</field>
+	<title>
+		<band height="32" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{infNFe.dest.CPF} != null || $F{infNFe.dest.CNPJ} != null || $F{infNFe.dest.enderDest.xLgr} != null]]></printWhenExpression>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="123" height="8" isPrintWhenDetailOverflows="true" uuid="4e10583c-9444-4612-ba27-c55a983d93df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONSUMIDOR]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" x="0" y="8" width="123" height="8" uuid="d853e329-80a7-482f-8464-dcc27c8431c6">
+					<printWhenExpression><![CDATA[$F{infNFe.dest.xNome} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NOME: " + $F{infNFe.dest.xNome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" x="0" y="16" width="123" height="8" uuid="868778ae-1d45-4cf6-acbd-a4a4f7998c1e">
+					<printWhenExpression><![CDATA[$F{infNFe.dest.CPF} != null || $F{infNFe.dest.CNPJ} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{infNFe.dest.CPF} != null
+? "CONSUMIDOR CPF: " + java.util.regex.Pattern
+        .compile("(\\d{3})(\\d{3})(\\d{3})(\\d{2})")
+        .matcher($F{infNFe.dest.CPF})
+        .replaceAll("$1.$2.$3-$4")
+: "CONSUMIDOR CNPJ: " + java.util.regex.Pattern
+        .compile("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})")
+        .matcher($F{infNFe.dest.CNPJ})
+        .replaceAll("$1.$2.$3/$4-$5")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="" x="0" y="24" width="123" height="8" uuid="bf357df4-1c09-426b-96b9-0eed20451416"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{infNFe.dest.enderDest.xLgr} != null
+    ? $F{infNFe.dest.enderDest.xLgr} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.nro} != null
+    ? $F{infNFe.dest.enderDest.nro} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.xCpl} != null
+    ? $F{infNFe.dest.enderDest.xCpl} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.xBairro} != null
+    ? $F{infNFe.dest.enderDest.xBairro} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.xMun} != null
+    ? $F{infNFe.dest.enderDest.xMun} + " - "
+    : "")
++
+($F{infNFe.dest.enderDest.UF} != null
+    ? $F{infNFe.dest.enderDest.UF}
+    : "")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="123" height="1" uuid="6abe8015-5fd1-4a00-a9f5-e573188a9ba9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="7">
+			<printWhenExpression><![CDATA[$F{infNFe.dest.CPF} == null  && $F{infNFe.dest.CNPJ} == null  && $F{infNFe.dest.enderDest.xLgr} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="123" height="7" isPrintWhenDetailOverflows="true" uuid="d1cb3048-e316-4fa5-b140-41dd6a34f9d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONSUMIDOR NAO IDENTIFICADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="123" height="1" uuid="ba8354cd-6bc9-4207-bfa3-2bbdbff7ab82"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

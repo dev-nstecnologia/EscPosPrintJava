@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chaveCompacto" pageWidth="186" pageHeight="842" columnWidth="186" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e5609be4-3871-46a4-807b-08a844eb1de2">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="URL_CONSULTA" class="java.lang.String"/>
+	<field name="infNFe.Id" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/@Id]]></fieldDescription>
+	</field>
+	<title>
+		<band height="24" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="" x="0" y="18" width="186" height="6" uuid="b53cd8e6-2d98-4288-8a9c-ee3af8320de7"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.util.regex.Pattern     .compile("(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})")     .matcher($F{infNFe.Id}.substring(3))     .replaceAll("$1 $2 $3 $4 $5 $6 $7 $8 $9 $10 $11")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="12" width="186" height="6" isPrintWhenDetailOverflows="true" uuid="e25aadb4-4124-48d0-b180-a0b1d77ad25a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CHAVE DE ACESSO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="186" height="12" uuid="4181cf74-e24b-48be-83e1-853a1a760e67"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Consulta pela chave de acesso em "
++
+$P{URL_CONSULTA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

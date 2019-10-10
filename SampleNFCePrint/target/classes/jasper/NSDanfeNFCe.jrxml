@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NSDanfeNFCe" pageWidth="206" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="186" leftMargin="12" rightMargin="8" topMargin="5" bottomMargin="5" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="62dafee5-e548-4122-a044-237fa763f58f">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LOGO_EMITENTE" class="java.lang.String"/>
+	<parameter name="IMPRIME_DETALHE" class="java.lang.Boolean"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".//"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="URL_CONSULTA" class="java.lang.String"/>
+	<parameter name="QRCODE_IMAGE" class="java.io.InputStream"/>
+	<parameter name="QRCODE_PATH" class="java.lang.String"/>
+	<parameter name="IS_PROC" class="java.lang.Boolean"/>
+	<parameter name="IMPRESSAO_PROD_LINHAS" class="java.lang.Integer"/>
+	<parameter name="IMPRIME_DESC_ITEM" class="java.lang.Boolean"/>
+	<parameter name="QUANT_ITENS" class="java.lang.Integer"/>
+	<parameter name="VALOR_REC" class="java.lang.String"/>
+	<parameter name="VALOR_TROCO" class="java.lang.String"/>
+	<parameter name="IS_CONSUMER_TICKET" class="java.lang.Boolean"/>
+	<parameter name="FORMATO_LAYOUT_IMPRESSAO" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<field name="infNFe.det" class="java.util.Collection">
+		<fieldDescription><![CDATA[infNFe/det]]></fieldDescription>
+	</field>
+	<field name="infNFe.versao" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/@versao]]></fieldDescription>
+	</field>
+	<field name="inNFe.det.count" class="java.lang.Integer">
+		<fieldDescription><![CDATA[count(infNFe/det)]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vProd" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vProd]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vST" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vST]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vFrete" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vFrete]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vSeg" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vSeg]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vOutro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vOutro]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vDesc" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vDesc]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ICMSTot.vNF" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vNF]]></fieldDescription>
+	</field>
+	<field name="infNFe.total.ISSQNtot.vServ" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ISSQNtot/vServ]]></fieldDescription>
+	</field>
+	<field name="nfeProc.protNFe.infProt.nProt" class="java.lang.String">
+		<fieldDescription><![CDATA[nfeProc/protNFe/infProt/nProt]]></fieldDescription>
+	</field>
+	<field name="nfeProc.protNFe.infProt.dhRecebto" class="java.lang.String">
+		<fieldDescription><![CDATA[nfeProc/protNFe/infProt/nProt]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="12" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="186" height="12" uuid="5a95f09f-1d2a-483b-81fd-ef283da0687c"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+        $P{REPORT_DATA_SOURCE}).dataSource(
+            ($P{IS_PROC})
+            ? "/nfeProc/NFe"
+            : "/NFe"
+        )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + ($P{FORMATO_LAYOUT_IMPRESSAO} == 1 ?
+    "cabecalhoNormal.jasper" :
+    "cabecalhoCompacto.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="14">
+			<printWhenExpression><![CDATA[$P{IMPRIME_DETALHE}]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="186" height="12" uuid="26057715-efa0-44df-9fac-67c04720f962"/>
+				<subreportParameter name="IMPRIME_DESC_ITEM">
+					<subreportParameterExpression><![CDATA[$P{IMPRIME_DESC_ITEM}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+        $P{REPORT_DATA_SOURCE}).dataSource(
+            ($P{IS_PROC})
+            ? "/nfeProc/NFe/infNFe/det"
+            : "/NFe/infNFe/det"
+        )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + (
+$P{IMPRESSAO_PROD_LINHAS} == 2
+        ? "NSDanfeNFCeDetalhe2Linhas.jasper"
+        : ($P{IMPRESSAO_PROD_LINHAS} == 3
+            ? "NSDanfeNFCeDetalheDinamico.jasper"
+            : "NSDanfeNFCeDetalhe.jasper"))]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement positionType="Float" x="0" y="13" width="186" height="1" uuid="4647cd93-f7f8-4ec6-aee2-82330f1a4b66"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="37">
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="0" width="104" height="7" uuid="ec8d7f31-dc49-4909-9ae6-0192b749e6af"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTD. TOTAL DE ITENS]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement positionType="Float" x="118" y="0" width="68" height="7" uuid="bd521a7c-517c-4e38-9bf0-9157db69bbb5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{QUANT_ITENS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="118" y="28" width="68" height="9" isRemoveLineWhenBlank="true" uuid="f5990a7f-f8c7-4603-acae-5de83c14cdad">
+					<printWhenExpression><![CDATA[!$F{infNFe.total.ICMSTot.vNF}.equals("0.00")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")))
+    .format(
+        Double.parseDouble($F{infNFe.total.ICMSTot.vNF}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="28" width="104" height="9" isRemoveLineWhenBlank="true" uuid="14fa83b7-a6ea-4c20-a68d-fd3535b3cddd">
+					<printWhenExpression><![CDATA[!$F{infNFe.total.ICMSTot.vNF}.equals("0.00")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR TOTAL R$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="7" width="104" height="7" uuid="69668d02-9efb-4b4c-a9fd-ead031cac8a7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR DOS PRODUTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="14" width="104" height="7" isRemoveLineWhenBlank="true" uuid="a6f73fe1-2fea-4795-a3d1-341b9b3a635f">
+					<printWhenExpression><![CDATA[!$F{infNFe.total.ICMSTot.vDesc}.equals("0.00")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCONTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="21" width="104" height="7" isRemoveLineWhenBlank="true" uuid="6e49ac6b-03ab-4f07-800e-090cdcd6ef97">
+					<printWhenExpression><![CDATA[!$F{infNFe.total.ICMSTot.vST}.equals("0.00")||
+!$F{infNFe.total.ICMSTot.vFrete}.equals("0.00")||
+!$F{infNFe.total.ICMSTot.vSeg}.equals("0.00")||
+!$F{infNFe.total.ICMSTot.vOutro}.equals("0.00")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OUTRAS DESPESAS]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement positionType="Float" x="118" y="7" width="68" height="7" uuid="e4dc1418-0d5a-43fa-9eca-59681b094fde"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")))
+    .format(
+
+        ($F{infNFe.total.ISSQNtot.vServ} != null)
+            ? Double.parseDouble($F{infNFe.total.ICMSTot.vProd}) + Double.parseDouble($F{infNFe.total.ISSQNtot.vServ})
+            : Double.parseDouble($F{infNFe.total.ICMSTot.vProd})
+    )]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement positionType="Float" x="118" y="14" width="68" height="7" isRemoveLineWhenBlank="true" uuid="81fdc7cf-7d14-40ae-927c-66c9d6815eae">
+					<printWhenExpression><![CDATA[!$F{infNFe.total.ICMSTot.vDesc}.equals("0.00")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")))
+    .format(Double.parseDouble($F{infNFe.total.ICMSTot.vDesc}))]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement positionType="Float" x="118" y="21" width="68" height="7" isRemoveLineWhenBlank="true" uuid="9bc35be0-e598-4c08-a160-1fe5fcad4728">
+					<printWhenExpression><![CDATA[!$F{infNFe.total.ICMSTot.vST}.equals("0.00")||
+!$F{infNFe.total.ICMSTot.vFrete}.equals("0.00")||
+!$F{infNFe.total.ICMSTot.vSeg}.equals("0.00")||
+!$F{infNFe.total.ICMSTot.vOutro}.equals("0.00")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")))
+    .format(Double.parseDouble($F{infNFe.total.ICMSTot.vST})
+    + Double.parseDouble($F{infNFe.total.ICMSTot.vFrete})
+    + Double.parseDouble($F{infNFe.total.ICMSTot.vSeg})
+    + Double.parseDouble($F{infNFe.total.ICMSTot.vOutro}))]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="8">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="186" height="7" uuid="3a121e99-3270-4ba4-89c4-aab7365bba5c"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+    $P{REPORT_DATA_SOURCE}).dataSource(
+        ($P{IS_PROC})
+            ?
+                ("3.10".equals($F{infNFe.versao}))
+                    ? "/nfeProc/NFe/infNFe/pag"
+                    : "/nfeProc/NFe/infNFe/pag/detPag"
+            :
+                ("3.10".equals($F{infNFe.versao}))
+                    ? "/NFe/infNFe/pag"
+                    : "/NFe/infNFe/pag/detPag"
+    )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "NSDanfeNFCePag.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="17">
+			<printWhenExpression><![CDATA[$P{VALOR_REC} != null && $P{VALOR_TROCO} != null]]></printWhenExpression>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="0" width="104" height="7" uuid="babb1458-c926-4ae6-8795-e25588a7bfab"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL RECEBIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="7" width="104" height="7" uuid="16fd6948-7925-4f01-9f40-d2e73f3874f1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TROCO]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement positionType="Float" x="118" y="0" width="68" height="7" uuid="d435a6c1-3758-4018-b01e-273adeb66c70"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{VALOR_REC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement positionType="Float" x="118" y="7" width="68" height="7" uuid="08786934-76ee-4c94-b641-4065420d1b03"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{VALOR_TROCO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="15" width="186" height="1" uuid="958a553b-ef3a-437a-9f74-27e931e56ab9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="12" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="186" height="12" uuid="54d62986-d246-45b4-b9c3-0b7772b4feb7"/>
+				<subreportParameter name="URL_CONSULTA">
+					<subreportParameterExpression><![CDATA[$P{URL_CONSULTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+        $P{REPORT_DATA_SOURCE}).dataSource(
+            ($P{IS_PROC})
+            ? "/nfeProc/NFe"
+            : "/NFe"
+        )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + ($P{FORMATO_LAYOUT_IMPRESSAO} == 1 ?
+    "chaveNormal.jasper" :
+    "chaveCompacto.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="12" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="186" height="12" uuid="c5dbe7c5-ae4f-4353-9fee-d6626bbeb8a8"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+        $P{REPORT_DATA_SOURCE}).dataSource(
+            ($P{IS_PROC})
+            ? "/nfeProc/NFe"
+            : "/NFe"
+        )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + ($P{FORMATO_LAYOUT_IMPRESSAO} == 1 ?
+    "consumidorNormal.jasper" :
+    "consumidorCompacto.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="12">
+			<subreport>
+				<reportElement x="0" y="0" width="186" height="12" uuid="6e0fd333-f2e1-411b-8742-536d55995c35"/>
+				<subreportParameter name="IS_CONSUMER_TICKET">
+					<subreportParameterExpression><![CDATA[$P{IS_CONSUMER_TICKET}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+        $P{REPORT_DATA_SOURCE}).dataSource(
+            ($P{IS_PROC})
+            ? "/nfeProc/NFe"
+            : "/NFe"
+        )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + ($P{FORMATO_LAYOUT_IMPRESSAO} == 1 ?
+    "infEmissaoNormal.jasper" :
+    "infEmissaoCompacto.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="6">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="186" height="6" uuid="36df6b72-d02e-40df-b7f1-c2349bc4287f"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+    $P{REPORT_DATA_SOURCE}).dataSource("nfeProc/protNFe/infProt")]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + ($P{FORMATO_LAYOUT_IMPRESSAO} == 1 ?
+    "nfceProtNormal.jasper" :
+    "nfceProtCompacto.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="129">
+			<staticText>
+				<reportElement key="" x="0" y="1" width="186" height="8" uuid="1eb89e86-83a3-42c0-9543-6d30c7ec654e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Consulta via leitor de QR Code]]></text>
+			</staticText>
+			<image scaleImage="RealSize" hAlign="Center" vAlign="Middle" onErrorType="Icon" evaluationTime="Report">
+				<reportElement key="image" x="33" y="9" width="120" height="120" uuid="fa71604b-9c55-428d-a3fc-a2355370b0c8"/>
+				<imageExpression><![CDATA[($P{QRCODE_IMAGE} != null)
+    ? $P{QRCODE_IMAGE}
+    : $P{QRCODE_PATH}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="0" width="186" height="1" uuid="6a4b3ee6-8799-4e04-86d9-46cbe9c15009"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="12">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="186" height="12" uuid="634ce27a-7aea-41d3-80ba-3b4e4a46ce7d"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+        $P{REPORT_DATA_SOURCE}).dataSource(
+            ($P{IS_PROC})
+            ? "/nfeProc/NFe"
+            : "/NFe"
+        )]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + ($P{FORMATO_LAYOUT_IMPRESSAO} == 1 ?
+    "infCplNormal.jasper" :
+    "infCplCompacto.jasper")]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

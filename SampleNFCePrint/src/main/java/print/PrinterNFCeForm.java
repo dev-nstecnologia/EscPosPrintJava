@@ -2,6 +2,7 @@ package print;
 
 import br.eti.ns.nsminiprinters.escpos.PrinterOptions;
 import commons.PrinterParameters;
+import jssc.SerialPortException;
 import type.DetailType;
 import type.ProductsLines;
 import type.YesNoType;
@@ -26,6 +27,8 @@ public class PrinterNFCeForm {
     private JComboBox cbLinhas;
     private JComboBox cbPapel;
     private JComboBox cbLayout;
+    private JCheckBox boxGeratePDF;
+    private JButton generatePDFButton;
 
     public PrinterNFCeForm() {
         escolherArquivoButton.addActionListener(new ActionListener() {
@@ -98,6 +101,48 @@ public class PrinterNFCeForm {
             }
 
         });
+        generatePDFButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                //Coloca todos os valores nas variaveis
+                String printer = cbImpressora.getSelectedItem().toString();
+                String port = txtPorta.getText();
+                int portSpeed = Integer.parseInt(cbSerial.getSelectedItem().toString());
+                String pathXML = txtPath.getText();
+                String paper = cbPapel.getSelectedItem().toString();
+                String layout = cbLayout.getSelectedItem().toString();
+                String lines = cbLinhas.getSelectedItem().toString();
+
+                //Testa se os campos estão preenchidos
+                if(port.equals("") || pathXML.equals("")){
+                    JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
+                    return;
+                }
+
+                //Cria os parametros, o printer e uma via de consumidor
+                PrinterParameters parameters = new PrinterParameters();
+                PrinterOptions printerOptions = new PrinterOptions();
+
+
+                //Seta o nome da impressora, a velociade da porta e qual porta é utilizada
+                parameters.setPrinterName(printer);
+                printerOptions.port = port;
+                printerOptions.portSpeed = portSpeed;
+
+
+                //Chama funções de verificação
+                detailPrinter(layout, parameters);
+                linesPrinter(lines, parameters);
+                drawDiscPrinter(boxDiscount.isSelected(), boxDrawer.isSelected(), parameters);
+                paperPrinter(paper, printerOptions);
+
+                try {
+                    PrinterNFCe.generatePDF(pathXML, parameters, printerOptions);
+                } catch (Exception e1 ) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
 
     //Verifica o tipo de impressão
@@ -160,4 +205,5 @@ public class PrinterNFCeForm {
         frame.pack();
         frame.setVisible(true);
     }
+
 }

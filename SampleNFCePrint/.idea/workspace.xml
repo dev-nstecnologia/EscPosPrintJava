@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d935d0f2-b356-4fd6-a036-ea3bcda0ec3f" name="Default Changelist" comment="">
+    <list default="true" id="55f2f19a-e0f1-45b3-9eb1-ec13a006ea43" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/commons/PrinterParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commons/PrinterParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commons/CreatePrint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commons/CreatePrint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/formatter/FormatterAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/formatter/FormatterAll.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commons/PrinterParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commons/PrinterParameters.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../miniprinters/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../miniprinters/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,21 +28,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="vmOptionsForImporter" value="-Xmx768m" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="1Rvqc4vkTMDWlIyKG2eJAj0tDWT" />
+  <component name="ProjectId" id="1RyFFy9rRm2VZIvqCzuvkbi2UPM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../miniprinters/pom.xml" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -61,7 +48,7 @@
   <component name="RunManager">
     <configuration name="PrinterNFCeForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="print.PrinterNFCeForm" />
-      <module name="SampleNFCePrint" />
+      <module name="ImpressaoEscPos" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="print.*" />
@@ -83,11 +70,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d935d0f2-b356-4fd6-a036-ea3bcda0ec3f" name="Default Changelist" comment="" />
-      <created>1570557993373</created>
+      <changelist id="55f2f19a-e0f1-45b3-9eb1-ec13a006ea43" name="Default Changelist" comment="" />
+      <created>1570631328478</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570557993373</updated>
+      <updated>1570631328478</updated>
     </task>
     <servers />
   </component>
@@ -96,9 +83,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>

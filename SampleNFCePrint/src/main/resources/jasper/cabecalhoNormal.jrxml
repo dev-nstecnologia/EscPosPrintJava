@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cabecalhoNormal" pageWidth="186" pageHeight="66" columnWidth="186" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0763e007-2cf6-4bd9-8d72-4facdc6bba35">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="infNFe.emit.xNome" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/xNome]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.xFant" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/xFant]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.cnpj" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/CNPJ]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.ie" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/IE]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.xLgr" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/xLgr]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.nro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/nro]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.xCpl" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/xCpl]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.xBairro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/xBairro]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.xMun" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/xMun]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.uf" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/UF]]></fieldDescription>
+	</field>
+	<field name="infNFe.emit.enderEmit.fone" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/emit/enderEmit/fone]]></fieldDescription>
+	</field>
+	<field name="infNFe.ide.tpEmis" class="java.lang.Integer">
+		<fieldDescription><![CDATA[infNFe/ide/tpEmis]]></fieldDescription>
+	</field>
+	<title>
+		<band height="48" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="186" height="10" uuid="c81331d8-1b55-43b6-8c6d-f4ef967a43a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{infNFe.emit.xFant} != null ? $F{infNFe.emit.xFant} : $F{infNFe.emit.xNome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="20" width="186" height="9" uuid="09fd451a-dc05-4987-b4a2-c923306473e9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{infNFe.emit.enderEmit.xLgr}
++ ", "
++ $F{infNFe.emit.enderEmit.nro}
++ ($F{infNFe.emit.enderEmit.xCpl} != null
+    ? ", " + $F{infNFe.emit.enderEmit.xCpl}
+    : "")
++ " - "
++ $F{infNFe.emit.enderEmit.xBairro}
++ " - "
++ $F{infNFe.emit.enderEmit.xMun}
++ " - "
++ $F{infNFe.emit.enderEmit.uf}
++ ($F{infNFe.emit.enderEmit.fone} != null
+    ? " - " + $F{infNFe.emit.enderEmit.fone}
+    : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="00.000.000/000.00" isBlankWhenNull="false">
+				<reportElement positionType="Float" x="0" y="10" width="186" height="10" uuid="f88a8df8-effa-433a-b0b1-05c7a86630cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CNPJ:" +
+java.util.regex.Pattern
+    .compile("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})")
+    .matcher($F{infNFe.emit.cnpj})
+    .replaceAll("$1.$2.$3/$4-$5")
++ " IE:" + $F{infNFe.emit.ie}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="29" width="186" height="1" uuid="f64f545b-7bc0-4b0c-b697-10c491d71a55"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="47" width="186" height="1" uuid="f6b53f20-8032-47a3-a25a-1104e0cbbb86"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="30" width="186" height="17" uuid="f286c831-42b7-4752-b24b-c4cb72224946"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Documento Auxiliar da Nota Fiscal Eletrônica para Consumidor Final"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{infNFe.ide.tpEmis} != 1]]></printWhenExpression>
+			<staticText>
+				<reportElement key="" x="0" y="0" width="186" height="9" uuid="ce42ad17-1aca-45cf-86b3-7eaf5553fbf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="7" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[EMITIDA EM CONTINGÊNCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="8" width="186" height="9" uuid="13937d6d-b2c7-4aff-9e4a-536bbffeca87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="7" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Pendente de autorização]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NSCancelamentoNFCe" pageWidth="161" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="123" leftMargin="12" rightMargin="26" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="62dafee5-e548-4122-a044-237fa763f58f">
+	<property name="ireport.zoom" value="3.138428376721004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="XNOME" class="java.lang.String"/>
+	<parameter name="IE" class="java.lang.String"/>
+	<parameter name="CNPJ" class="java.lang.String"/>
+	<parameter name="ENDERECO" class="java.lang.String"/>
+	<parameter name="NNF" class="java.lang.String"/>
+	<parameter name="SERIE" class="java.lang.String"/>
+	<parameter name="EMISSAO" class="java.lang.String"/>
+	<parameter name="URL_CONSULTA" class="java.lang.String"/>
+	<parameter name="CHNFE" class="java.lang.String"/>
+	<parameter name="PROTOCOLO" class="java.lang.String"/>
+	<parameter name="TPAMB" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="1" width="123" height="11" uuid="a3e60c34-9af8-4ce0-b503-03064211fe07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{XNOME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="00.000.000/000.00" isBlankWhenNull="false">
+				<reportElement positionType="Float" x="0" y="12" width="123" height="10" uuid="ea6f0779-b048-4b82-8bb8-4cdf8be7d6ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CNPJ: " + $P{CNPJ} + " " + "IE: " + $P{IE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="22" width="123" height="10" isPrintWhenDetailOverflows="true" uuid="61a871e9-d9a3-4b8f-9bae-6cf684d4056e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ENDERECO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="34" width="123" height="1" uuid="a6b8951e-cc75-4f9e-8c73-b820f20949e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="48" width="123" height="1" uuid="c33afe00-334c-4c37-b92f-6532ad3e28b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="36" width="123" height="11" uuid="9ca115b9-4d42-440e-8a95-38c8bd185674"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CANCELAMENTO"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="16">
+			<printWhenExpression><![CDATA[$P{TPAMB}.equals("2")]]></printWhenExpression>
+			<staticText>
+				<reportElement key="" x="0" y="1" width="123" height="15" uuid="b01c8e1b-485c-49cd-879e-050a8a7e8fd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[EMITIDA EM HOMOLOGAÇÃO
+SEM VALOR FISCAL]]></text>
+			</staticText>
+		</band>
+		<band height="32" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="00.000.000/000.00" isBlankWhenNull="false">
+				<reportElement x="0" y="0" width="123" height="10" uuid="de7f8b2c-4bfb-423e-aff7-a60fbcff07a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Número: " + $P{NNF} + " " + "Série: " + $P{SERIE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="00.000.000/000.00" isBlankWhenNull="false">
+				<reportElement positionType="Float" x="0" y="10" width="123" height="10" uuid="21c1808b-621a-4be9-bf71-6d9c64037c11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Emissão: " + $P{EMISSAO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="" positionType="Float" stretchType="RelativeToBandHeight" x="0" y="21" width="123" height="10" isPrintWhenDetailOverflows="true" uuid="43e4c9a6-97d8-4881-b21f-6621fe6b6496"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Consulta pela chave de acesso em "
++
+$P{URL_CONSULTA}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="123" height="8" isPrintWhenDetailOverflows="true" uuid="cf1189fc-be66-4918-9b9f-eec0e5365ce6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CHAVE DE ACESSO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="" x="0" y="9" width="123" height="10" uuid="e9b341cb-9d3c-4858-9f76-ede707d3a7ff"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.util.regex.Pattern
+    .compile("(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})")
+    .matcher($P{CHNFE})
+    .replaceAll("$1 $2 $3 $4 $5 $6 $7 $8 $9 $10 $11")]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="23">
+			<line>
+				<reportElement x="0" y="1" width="123" height="1" uuid="e490ca6f-bae4-4e0a-9866-55a81248c86b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="1" width="123" height="8" isPrintWhenDetailOverflows="true" uuid="f50810c9-d854-4eb6-a416-21beab658223"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[PROTOCOLO DE AUTORIZAÇÃO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="" x="0" y="10" width="123" height="8" uuid="47ff9556-3aed-4120-ad5c-59285207bdbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PROTOCOLO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="19" width="123" height="1" uuid="3f5ede2e-e127-4091-a64d-e25ff43e5c25"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

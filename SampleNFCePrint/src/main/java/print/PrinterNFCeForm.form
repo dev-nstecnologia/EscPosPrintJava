@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="print.PrinterNFCeForm">
   <grid id="27dc6" binding="panelMain" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="40" y="20" width="565" height="571"/>
+      <xy x="40" y="20" width="689" height="695"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -28,19 +28,10 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="754e5" class="javax.swing.JCheckBox" binding="boxDrawer">
-        <constraints>
-          <grid row="7" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag top="10" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
-        </constraints>
-        <properties>
-          <text value="Abrir Gaveta"/>
-        </properties>
-      </component>
       <component id="51194" class="javax.swing.JButton" binding="escolherArquivoButton" default-binding="true">
         <constraints>
           <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="4.0" weighty="1.0" ipadx="60" ipady="1"/>
+          <gridbag top="5" left="0" bottom="0" right="0" weightx="4.0" weighty="1.0" ipadx="60" ipady="1"/>
         </constraints>
         <properties>
           <text value="Escolher Arquivo"/>
@@ -58,17 +49,6 @@
           <text value="Impressora"/>
         </properties>
       </component>
-      <component id="b0e3c" class="javax.swing.JTextField" binding="txtPorta">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="COM3"/>
-        </properties>
-      </component>
       <component id="db12b" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -80,20 +60,84 @@
       </component>
       <component id="bc54f" class="javax.swing.JButton" binding="imprimirButton" default-binding="true">
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="30" left="50" bottom="30" right="50" weightx="0.0" weighty="0.0"/>
+          <grid row="11" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="50" bottom="30" right="50" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <alignmentY value="0.5"/>
+          <autoscrolls value="true"/>
           <text value="Imprimir"/>
+        </properties>
+      </component>
+      <component id="96ae1" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="10" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <text value="Linhas de Impressão dos produtos"/>
+        </properties>
+      </component>
+      <component id="f06c6" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="10" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <text value="Tamanho do Papel"/>
+        </properties>
+      </component>
+      <component id="f1182" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="10" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Tipo de Impressão"/>
+        </properties>
+      </component>
+      <component id="e7af5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag top="40" left="0" bottom="30" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="EXEMPLO IMPRESSAO NFC-e"/>
         </properties>
       </component>
       <component id="65013" class="javax.swing.JCheckBox" binding="boxDiscount">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag top="10" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
+          <gridbag top="10" left="0" bottom="0" right="10" weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
           <text value="Imprimir Desconto"/>
+        </properties>
+      </component>
+      <component id="d63b4" class="javax.swing.JComboBox" binding="cbLayout">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Normal"/>
+            <item value="Ecologica"/>
+          </model>
+        </properties>
+      </component>
+      <component id="acd26" class="javax.swing.JComboBox" binding="cbLinhas">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="1 Linha"/>
+            <item value="2 Linhas"/>
+            <item value="Linhas Dinamicas"/>
+          </model>
         </properties>
       </component>
       <component id="34e63" class="javax.swing.JComboBox" binding="cbSerial">
@@ -119,26 +163,33 @@
           </model>
         </properties>
       </component>
-      <component id="acd26" class="javax.swing.JComboBox" binding="cbLinhas">
+      <component id="b0e3c" class="javax.swing.JTextField" binding="txtPorta">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
           <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <model>
-            <item value="1 Linha"/>
-            <item value="2 Linhas"/>
-            <item value="Linhas Dinamicas"/>
-          </model>
+          <text value="COM3"/>
         </properties>
       </component>
-      <component id="96ae1" class="javax.swing.JLabel">
+      <component id="de575" class="javax.swing.JComboBox" binding="cbImpressora">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="10" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Linhas de Impressão dos produtos"/>
+          <autoscrolls value="false"/>
+          <editable value="false"/>
+          <model>
+            <item value="BEMATECH MP-4200 TH"/>
+            <item value="BEMATECH MP-2500 TH"/>
+            <item value="DARUMA DR700"/>
+            <item value="EPSON T20"/>
+            <item value="EPSON T70"/>
+            <item value="ELGIN I9"/>
+          </model>
         </properties>
       </component>
       <component id="3f7fc" class="javax.swing.JComboBox" binding="cbPapel">
@@ -153,61 +204,23 @@
           </model>
         </properties>
       </component>
-      <component id="f06c6" class="javax.swing.JLabel">
+      <component id="754e5" class="javax.swing.JCheckBox" binding="boxDrawer">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="10" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="0" bottom="0" right="40" weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <text value="Tamanho do Papel"/>
+          <text value="Abrir Gaveta"/>
         </properties>
       </component>
-      <component id="de575" class="javax.swing.JComboBox" binding="cbImpressora">
+      <component id="ca8f7" class="javax.swing.JButton" binding="generatePDFButton">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
+          <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="50" bottom="10" right="50" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <autoscrolls value="false"/>
-          <editable value="false"/>
-          <model>
-            <item value="BEMATECH MP-4200 TH"/>
-            <item value="BEMATECH MP-2500 TH"/>
-            <item value="DARUMA, EPSON T20"/>
-            <item value="EPSON T70"/>
-            <item value="ELGIN I9"/>
-          </model>
-        </properties>
-      </component>
-      <component id="f1182" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="10" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Tipo de Impressão"/>
-        </properties>
-      </component>
-      <component id="d63b4" class="javax.swing.JComboBox" binding="cbLayout">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Normal"/>
-            <item value="Ecologica"/>
-          </model>
-        </properties>
-      </component>
-      <component id="e7af5" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag top="40" left="0" bottom="30" right="0" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="11"/>
-          <text value="EXEMPLO IMPRESSAO NFC-e"/>
+          <actionCommand value="GeneratePDF"/>
+          <text value="Gerar PDF"/>
         </properties>
       </component>
     </children>

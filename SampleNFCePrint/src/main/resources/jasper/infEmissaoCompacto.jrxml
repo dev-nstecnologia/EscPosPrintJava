@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="infEmissaoCompacto" pageWidth="186" pageHeight="13" columnWidth="186" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f0af730c-332d-43bc-a200-0ac842acf6f5">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IS_CONSUMER_TICKET" class="java.lang.Boolean"/>
+	<field name="infNFe.ide.serie" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/ide/serie]]></fieldDescription>
+	</field>
+	<field name="infNFe.ide.nNF" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/ide/nNF]]></fieldDescription>
+	</field>
+	<field name="infNFe.ide.dhEmi" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/ide/dhEmi]]></fieldDescription>
+	</field>
+	<title>
+		<band height="13" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="" x="0" y="1" width="186" height="6" uuid="7200b6f1-66e4-488c-96e6-935d74899253"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nº " + $F{infNFe.ide.nNF} + " Série " + $F{infNFe.ide.serie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="" x="0" y="7" width="186" height="6" uuid="4d30f84e-6d25-48c1-b9c5-a0351be7b3fd"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(
+    new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX").parse($F{infNFe.ide.dhEmi})
+)
++
+(($P{IS_CONSUMER_TICKET})
+    ? " - Via Consumidor"
+    : " - Via Estabelecimento")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="186" height="1" uuid="12c0952d-d12f-4683-90fd-b37430fe1dc8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+</jasperReport>

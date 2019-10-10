@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="infCplCompacto" pageWidth="186" pageHeight="24" columnWidth="186" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b0854cd0-ef37-46b9-abd9-66cd6504ba3b">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="infNFe.total.ICMSTot.vTotTrib" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/total/ICMSTot/vTotTrib]]></fieldDescription>
+	</field>
+	<field name="infNFe.infAdic.infCpl" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/infAdic/infCpl]]></fieldDescription>
+	</field>
+	<field name="infNFe.infAdic.infAdFisco" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/infAdic/infAdFisco]]></fieldDescription>
+	</field>
+	<field name="infNFe.ide.tpAmb" class="java.lang.Integer">
+		<fieldDescription><![CDATA[infNFe/ide/tpAmb]]></fieldDescription>
+	</field>
+	<title>
+		<band height="6" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{infNFe.ide.tpAmb} != 1 || $F{infNFe.infAdic.infAdFisco} != null]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="" positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="186" height="6" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="b6877479-2aad-4155-b7ca-656c7c903030"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{infNFe.ide.tpAmb} == 1)
+    ? $F{infNFe.infAdic.infAdFisco}
+    : ($F{infNFe.infAdic.infAdFisco} != null && !$F{infNFe.infAdic.infAdFisco}.equals(""))
+        ? $F{infNFe.infAdic.infAdFisco} + "\n" + "EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL"
+        : "EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement key="" x="0" y="0" width="186" height="6" uuid="df23b3bb-f575-4d93-8cc3-d5e829ba9811"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[ÁREA DE MENSAGEM DE INTERESSE DO CONTRIBUINTE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="12" width="186" height="6" uuid="f6679e04-7452-42a6-af0d-96af535438c2"/>
+				<textElement verticalAlignment="Top" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{infNFe.infAdic.infCpl}.replace("#BR#", "\n")]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="" positionType="Float" x="154" y="6" width="32" height="6" uuid="b9c31027-25cb-45da-bd11-7b2da7043744"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{infNFe.total.ICMSTot.vTotTrib} != null
+? new DecimalFormat("###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")))
+    .format(Double.parseDouble($F{infNFe.total.ICMSTot.vTotTrib}))
+: "0,00")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" positionType="Float" x="0" y="6" width="153" height="6" uuid="43210c36-47f8-4523-a303-7255e4b883a1"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tributos Totais Incidentes (Lei Federal 12.741/2012) R$]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

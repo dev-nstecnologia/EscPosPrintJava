@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="chaveNormal" pageWidth="123" pageHeight="32" columnWidth="123" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8d7bf93a-5ec4-479f-a875-a1653737aa05">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="URL_CONSULTA" class="java.lang.String"/>
+	<field name="infNFe.Id" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/@Id]]></fieldDescription>
+	</field>
+	<title>
+		<band height="32" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="123" height="14" uuid="49772ed2-fadb-4450-a5e4-a97a79f01c34"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Consulta pela chave de acesso em "
++
+$P{URL_CONSULTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="14" width="123" height="8" isPrintWhenDetailOverflows="true" uuid="a895d805-bbc1-423e-86b8-c6d64526804e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CHAVE DE ACESSO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="" x="0" y="22" width="123" height="10" uuid="a91f2fcf-b589-4686-9332-de3db8b54044"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.util.regex.Pattern     .compile("(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{4})")     .matcher($F{infNFe.Id}.substring(3))     .replaceAll("$1 $2 $3 $4 $5 $6 $7 $8 $9 $10 $11")]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

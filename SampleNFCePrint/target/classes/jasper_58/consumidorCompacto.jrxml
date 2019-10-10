@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consumidorCompacto" pageWidth="123" pageHeight="36" columnWidth="123" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1bc250af-ccf8-4600-ad99-7ea933dfea9b">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="infNFe.dest.CPF" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/CPF]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.xNome" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/xNome]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.CNPJ" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/CNPJ]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xLgr" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xLgr]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.nro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/nro]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xCpl" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xCpl]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xBairro" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xBairro]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.xMun" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/xMun]]></fieldDescription>
+	</field>
+	<field name="infNFe.dest.enderDest.UF" class="java.lang.String">
+		<fieldDescription><![CDATA[infNFe/dest/enderDest/UF]]></fieldDescription>
+	</field>
+	<title>
+		<band height="25" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{infNFe.dest.CPF} != null || $F{infNFe.dest.CNPJ} != null || $F{infNFe.dest.enderDest.xLgr} != null]]></printWhenExpression>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="123" height="6" isPrintWhenDetailOverflows="true" uuid="919c451a-39a3-4fb0-8af0-36f8812ab6ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONSUMIDOR]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" x="0" y="7" width="123" height="6" uuid="77f1e4d8-fd60-480b-bdcd-e8055dda8957">
+					<printWhenExpression><![CDATA[$F{infNFe.dest.xNome} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NOME: " + $F{infNFe.dest.xNome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="" x="0" y="19" width="123" height="6" uuid="263c7219-e8f3-4fce-b2b9-faf0bc7feff1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{infNFe.dest.enderDest.xLgr} != null
+    ? $F{infNFe.dest.enderDest.xLgr} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.nro} != null
+    ? $F{infNFe.dest.enderDest.nro} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.xCpl} != null
+    ? $F{infNFe.dest.enderDest.xCpl} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.xBairro} != null
+    ? $F{infNFe.dest.enderDest.xBairro} + ", "
+    : "")
++
+($F{infNFe.dest.enderDest.xMun} != null
+    ? $F{infNFe.dest.enderDest.xMun} + " - "
+    : "")
++
+($F{infNFe.dest.enderDest.UF} != null
+    ? $F{infNFe.dest.enderDest.UF}
+    : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" x="0" y="13" width="123" height="6" uuid="9e4bf0ea-140b-4464-a4b4-2ff08a1f52e5">
+					<printWhenExpression><![CDATA[$F{infNFe.dest.CPF} != null || $F{infNFe.dest.CNPJ} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{infNFe.dest.CPF} != null
+? "CONSUMIDOR CPF: " + java.util.regex.Pattern
+        .compile("(\\d{3})(\\d{3})(\\d{3})(\\d{2})")
+        .matcher($F{infNFe.dest.CPF})
+        .replaceAll("$1.$2.$3-$4")
+: "CONSUMIDOR CNPJ: " + java.util.regex.Pattern
+        .compile("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})")
+        .matcher($F{infNFe.dest.CNPJ})
+        .replaceAll("$1.$2.$3/$4-$5")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="123" height="1" uuid="11fcd042-c796-45d4-b9d9-d800e90e53d0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="6">
+			<printWhenExpression><![CDATA[$F{infNFe.dest.CPF} == null  && $F{infNFe.dest.CNPJ} == null  && $F{infNFe.dest.enderDest.xLgr} == null]]></printWhenExpression>
+			<line>
+				<reportElement x="0" y="0" width="123" height="1" uuid="fc62e4a6-784f-4739-9502-1dfb67c59319"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="" stretchType="RelativeToBandHeight" x="0" y="0" width="123" height="6" isPrintWhenDetailOverflows="true" uuid="bae17dc4-4a93-43e7-b189-0c1122805e7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial" size="5" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CONSUMIDOR NAO IDENTIFICADO]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

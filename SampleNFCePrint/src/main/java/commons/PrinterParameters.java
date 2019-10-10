@@ -1,7 +1,6 @@
 package commons;
 
 import schema.TNFe;
-import schema.TNfeProc;
 import type.DetailType;
 import type.ProductsLines;
 import type.YesNoType;

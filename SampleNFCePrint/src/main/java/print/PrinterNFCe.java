@@ -8,12 +8,16 @@ import br.eti.ns.nsminiprinters.escpos.specs.PrinterSpecFactory;
 
 import commons.*;
 
+import java.io.File;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import jssc.SerialPortException;
 import org.apache.log4j.Logger;
+import printjasper.NFCeJasperParameters;
+import printjasper.NFCeJasperPrinter;
+import printjasper.QRCodeHelper;
 import schema.TNFe;
 import schema.TNfeProc;
 
@@ -32,10 +36,11 @@ public class PrinterNFCe {
 
     //Método que irá imprimir a NFC-e
     public static void printNFCe(String path, PrinterParameters parameters, PrinterOptions printerOptions) throws Exception {
+        NFCeJasperParameters jasperParameters = new NFCeJasperParameters();
+        
+        logger.debug("Iniciando impressão de NCF-e em Mini Impressora");
 
-        logger.debug("Iniciando impressão de CF-e em Mini Impressora");
-
-        //Cria apartir do xml um objeto NFC-e
+        //Cria a partir do xml um objeto NFC-e
         Object nfce = XMLtoTNFCe(path);
 
         //Checa se o .xml é uma NFCe
@@ -43,20 +48,14 @@ public class PrinterNFCe {
             JOptionPane.showMessageDialog(null, "O XML informado não é uma NFCe, tente novamente");
             return;
         }
-
-        //Setta as url, qrcode e protocolo dependendo do tipo de emissão: Autorizada ou Contigência
+        //Setta as informacoes das impressoes
         if (nfce.getClass().equals(TNFe.class)) {
             TNFe tNfe = (TNFe) nfce;
-            parameters.setNfceContent(tNfe);
-            parameters.setUrlConsult(tNfe.getInfNFeSupl().getUrlChave());
-            parameters.setQrCodeContent(tNfe.getInfNFeSupl().getQrCode());
-            parameters.setAuthorizationProtocol("");
+            setPrinterParameters(parameters, tNfe);
+
         } else {
-            TNfeProc tNfeProc = (TNfeProc) nfce;
-            parameters.setNfceContent(tNfeProc.getNFe());
-            parameters.setUrlConsult(tNfeProc.getNFe().getInfNFeSupl().getUrlChave());
-            parameters.setQrCodeContent(tNfeProc.getNFe().getInfNFeSupl().getQrCode());
-            parameters.setAuthorizationProtocol(tNfeProc.getProtNFe().getInfProt().getNProt());
+            TNfeProc tNfe = (TNfeProc) nfce;
+            setPrinterParameters(parameters, tNfe);
         }
 
         //Cria especificações dependendo da impressora utilizada
@@ -94,6 +93,32 @@ public class PrinterNFCe {
         }
     }
 
+    //Método que gera uma NFC-e em PDF
+    public static void generatePDF(String path, PrinterParameters parameters, PrinterOptions printerOptions) throws Exception {
+        NFCeJasperParameters jasperParameters = new NFCeJasperParameters();
+
+        //Cria a partir do xml um objeto NFC-e
+        Object nfce = XMLtoTNFCe(path);
+
+        //Checa se o .xml é uma NFCe
+        if(nfce==null){
+            JOptionPane.showMessageDialog(null, "O XML informado não é uma NFCe, tente novamente");
+            return;
+        }
+
+        //Setta as url, qrcode e protocolo dependendo do tipo de emissão: Autorizada ou Contigência e ja salva o pdf
+        if (nfce.getClass().equals(TNFe.class)) {
+            TNFe tNfe = (TNFe) nfce;
+            jasperParameters.isProc = false;
+            setAndGenerateJasperParameters(printerOptions, parameters, jasperParameters, tNfe, path);
+        } else {
+            TNfeProc tNfe = (TNfeProc) nfce;
+            jasperParameters.isProc = true;
+            setAndGenerateJasperParameters(printerOptions, parameters, jasperParameters, tNfe.getNFe(), path);
+        }
+
+    }
+
     //Transforma o xml em objeto NFC-e
     private static Object XMLtoTNFCe(String fileXML) throws Exception {
 
@@ -120,4 +145,61 @@ public class PrinterNFCe {
         }
 
     }
+
+    //Salva o PDF gerado pelos Jasper Parameters
+    private static void savePDF(NFCeJasperParameters jasperParameters, String fileXML, String pathToSavePDF) throws Exception {
+        File localSalvar = new File("./PDFs/");
+        if (!localSalvar.exists()) {
+            localSalvar.mkdirs();
+        }
+        String strXML = new String(Files.readAllBytes(Paths.get(fileXML)));
+        NFCeJasperPrinter nfceJasperPrinter = new NFCeJasperPrinter(strXML, jasperParameters);
+
+        File arq = new File(pathToSavePDF);
+        if(arq.exists()){
+            arq.delete();
+        }
+        nfceJasperPrinter.printToPDFFile(pathToSavePDF);
+    }
+
+    //Testa se esta em contigencia e setta os Jasper Parameters
+    private static void setAndGenerateJasperParameters(PrinterOptions printerOptions,  PrinterParameters parameters, NFCeJasperParameters jasperParameters, TNFe nfce, String path) throws Exception {
+       setPrinterParameters(parameters, nfce);
+        if(printerOptions.paperWidth.equals(PrinterOptions.PAPERWIDTH.PAPER_58MM)){
+            jasperParameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_58MM;
+        }else{
+            jasperParameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_80MM;
+        }
+
+        jasperParameters.qrCodePath = parameters.getQrCodeContent();
+        jasperParameters.urlConsulta = parameters.getUrlConsult();
+        jasperParameters.qrCodeImage = QRCodeHelper.generateQRCodeToPNGStream(jasperParameters.qrCodePath);
+        jasperParameters.valorTroco = nfce.getInfNFe().getPag().getVTroco();
+
+        jasperParameters.isConsumerTicket = true;
+        savePDF(jasperParameters, path, "./PDFs/" + nfce.getInfNFe().getId() + "-consumidor.pdf");
+
+        if (!parameters.getNfceContent().getInfNFe().getIde().getTpEmis().equals("1")) {
+            jasperParameters.qrCodePath = parameters.getQrCodeContent();
+            jasperParameters.qrCodeImage = QRCodeHelper.generateQRCodeToPNGStream(jasperParameters.qrCodePath);
+            jasperParameters.isConsumerTicket = false;
+           savePDF(jasperParameters, path, "./PDFs/" + nfce.getInfNFe().getId() + "-estabelecimento.pdf");
+        }
+        JOptionPane.showMessageDialog(null, "Geração de PDF feita com sucesso!!!");
+    }
+
+    //Setta os Prints Parameters
+    private static void setPrinterParameters(PrinterParameters parameters, TNFe tNfe){
+        parameters.setNfceContent(tNfe);
+        parameters.setUrlConsult(tNfe.getInfNFeSupl().getUrlChave());
+        parameters.setQrCodeContent(tNfe.getInfNFeSupl().getQrCode());
+        parameters.setAuthorizationProtocol("");
+    }
+    private static void setPrinterParameters(PrinterParameters parameters, TNfeProc tNfe){
+        parameters.setNfceContent(tNfe.getNFe());
+        parameters.setUrlConsult(tNfe.getNFe().getInfNFeSupl().getUrlChave());
+        parameters.setQrCodeContent(tNfe.getNFe().getInfNFeSupl().getQrCode());
+        parameters.setAuthorizationProtocol(tNfe.getProtNFe().getInfProt().getNProt());
+    }
+
 }
