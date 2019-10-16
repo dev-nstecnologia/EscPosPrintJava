@@ -44,7 +44,7 @@ public class NFCeJasperParameters{
 
     public PAPERWIDTH paperWidth; //
 
-    public int formatoLayoutImpressao = 1; //NORMAL
+    public int formatoLayoutImpressao = 1;
 
     /**
      * Creates a MAP with the value of the properties.

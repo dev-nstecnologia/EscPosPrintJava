@@ -2,22 +2,20 @@ package print;
 
 import br.eti.ns.nsminiprinters.escpos.PrinterOptions;
 import commons.PrinterParameters;
-import jssc.SerialPortException;
 import type.DetailType;
 import type.ProductsLines;
 import type.YesNoType;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.io.File;
+import java.util.Arrays;
 
-public class PrinterNFCeForm {
+public class PrinterNFCeForm extends JFrame{
     private JPanel panelMain;
     private JCheckBox boxDiscount;
     private JCheckBox boxDrawer;
-    private JLabel Impressora;
     private JTextField txtPath;
     private JButton escolherArquivoButton;
     private JTextField txtPorta;
@@ -27,126 +25,126 @@ public class PrinterNFCeForm {
     private JComboBox cbLinhas;
     private JComboBox cbPapel;
     private JComboBox cbLayout;
-    private JCheckBox boxGeratePDF;
     private JButton generatePDFButton;
+    private JLabel Impressora;
+
+
+
+    //Método que inicia o form
+    public static void main(String[] args) {
+        try {
+            if(args[0].toUpperCase().equals("GERARPDFNFCE")){
+                gerarPDF(args[1], args[2], args[3], args[4], args[5], args[6], Boolean.parseBoolean(args[7]), Boolean.parseBoolean(args[8]));
+            } else if(args[0].toUpperCase().equals("IMPRIMIRNFCE")){
+                imprimir(args[1], args[2], Integer.parseInt(args[3]), args[4], args[5], args[6], args[7],
+                        Boolean.parseBoolean(args[8]), Boolean.parseBoolean(args[9]));
+            }
+            System.out.print(Arrays.toString(args));
+        } catch (Exception e){
+            EventQueue.invokeLater(() -> {
+                try{
+                    PrinterNFCeForm frame = new PrinterNFCeForm();
+                    frame.setResizable(false);
+                    frame.setContentPane(new PrinterNFCeForm().panelMain);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
+            });
+            e.printStackTrace();
+        }
+    }
 
     public PrinterNFCeForm() {
-        escolherArquivoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        escolherArquivoButton.addActionListener(e -> {
 
-                //Cria um file chooser que so seleciona files
-                JFileChooser jFC = new JFileChooser();
-                jFC.setDialogTitle("Selecione XML");
-                jFC.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            //Cria um file chooser que so seleciona files
+            JFileChooser jFC = new JFileChooser();
+            jFC.setDialogTitle("Selecione XML");
+            jFC.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-                //Cria um filtro para somente pegar .xml
-                FileNameExtensionFilter filter = new FileNameExtensionFilter(".xml", "xml");
-                jFC.setFileFilter(filter);
+            //Cria um filtro para somente pegar .xml
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(".xml", "xml");
+            jFC.setFileFilter(filter);
 
-                //Abre uma janela para ser pego o arquivo
-                int retornoSelect = jFC.showOpenDialog(escolherArquivoButton);
+            //Abre uma janela para ser pego o arquivo
+            int retornoSelect = jFC.showOpenDialog(escolherArquivoButton);
 
-                //Testa se o arquivo é aprovado pelo filtro
-                if(retornoSelect == JFileChooser.APPROVE_OPTION){
+            //Testa se o arquivo é aprovado pelo filtro
+            if(retornoSelect == JFileChooser.APPROVE_OPTION){
 
-                    //Pega o path do .xml escolhido
-                    File file = jFC.getSelectedFile();
-                    txtPath.setText(file.getPath());
-                }
+                //Pega o path do .xml escolhido
+                File file = jFC.getSelectedFile();
+                txtPath.setText(file.getPath());
             }
         });
-        imprimirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                //Coloca todos os valores nas variaveis
-                String printer = cbImpressora.getSelectedItem().toString();
-                String port = txtPorta.getText();
-                int portSpeed = Integer.parseInt(cbSerial.getSelectedItem().toString());
-                String pathXML = txtPath.getText();
-                String paper = cbPapel.getSelectedItem().toString();
-                String layout = cbLayout.getSelectedItem().toString();
-                String lines = cbLinhas.getSelectedItem().toString();
+        imprimirButton.addActionListener(e -> {
 
-                //Testa se os campos estão preenchidos
-                if(port.equals("") || pathXML.equals("")){
-                    JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
-                    return;
-                }
-
-                //Cria os parametros, o printer e uma via de consumidor
-                PrinterParameters parameters = new PrinterParameters();
-                PrinterOptions printerOptions = new PrinterOptions();
-
-
-                //Seta o nome da impressora, a velociade da porta e qual porta é utilizada
-                parameters.setPrinterName(printer);
-                printerOptions.port = port;
-                printerOptions.portSpeed = portSpeed;
-
-
-                //Chama funções de verificação
-                detailPrinter(layout, parameters);
-                linesPrinter(lines, parameters);
-                drawDiscPrinter(boxDiscount.isSelected(), boxDrawer.isSelected(), parameters);
-                paperPrinter(paper, printerOptions);
-
-                //Chama o método que irá imprimir através dos dados settados
-                try {
-                    PrinterNFCe.printNFCe(pathXML, parameters, printerOptions);
-                } catch (Exception e1 ) {
-                    e1.printStackTrace();
-                }
-            }
-
+            imprimir(cbImpressora.getSelectedItem().toString(), txtPorta.getText(),
+                    Integer.parseInt(cbSerial.getSelectedItem().toString()), txtPath.getText(),
+                    cbPapel.getSelectedItem().toString(), cbLayout.getSelectedItem().toString(),
+                    cbLinhas.getSelectedItem().toString(), boxDiscount.isSelected(), boxDrawer.isSelected());
         });
-        generatePDFButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                //Coloca todos os valores nas variaveis
-                String printer = cbImpressora.getSelectedItem().toString();
-                String port = txtPorta.getText();
-                int portSpeed = Integer.parseInt(cbSerial.getSelectedItem().toString());
-                String pathXML = txtPath.getText();
-                String paper = cbPapel.getSelectedItem().toString();
-                String layout = cbLayout.getSelectedItem().toString();
-                String lines = cbLinhas.getSelectedItem().toString();
 
-                //Testa se os campos estão preenchidos
-                if(port.equals("") || pathXML.equals("")){
-                    JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
-                    return;
-                }
+        generatePDFButton.addActionListener(e -> {
 
-                //Cria os parametros, o printer e uma via de consumidor
-                PrinterParameters parameters = new PrinterParameters();
-                PrinterOptions printerOptions = new PrinterOptions();
-
-
-                //Seta o nome da impressora, a velociade da porta e qual porta é utilizada
-                parameters.setPrinterName(printer);
-                printerOptions.port = port;
-                printerOptions.portSpeed = portSpeed;
-
-
-                //Chama funções de verificação
-                detailPrinter(layout, parameters);
-                linesPrinter(lines, parameters);
-                drawDiscPrinter(boxDiscount.isSelected(), boxDrawer.isSelected(), parameters);
-                paperPrinter(paper, printerOptions);
-
-                try {
-                    PrinterNFCe.generatePDF(pathXML, parameters, printerOptions);
-                } catch (Exception e1 ) {
-                    e1.printStackTrace();
-                }
-            }
+            gerarPDF(cbImpressora.getSelectedItem().toString(), txtPath.getText(), "./PDFs/",
+                    cbPapel.getSelectedItem().toString(), cbLayout.getSelectedItem().toString(),
+                    cbLinhas.getSelectedItem().toString(), boxDiscount.isSelected(), boxDrawer.isSelected());
         });
     }
 
+
+    private static void imprimir(String printer, String port, int portSpeed, String pathXML, String paper, String layout, String lines, boolean hasDiscount, boolean hasDrawer){
+        PrinterOptions printerOptions = setPrinterOptions(port, portSpeed, paper);
+        PrinterParameters parameters = setPrinterParameters(printer, layout, lines, hasDiscount, hasDrawer);
+        try {
+            PrinterNFCe.printNFCe(pathXML, parameters, printerOptions);
+        } catch (Exception e1 ) {
+            e1.printStackTrace();
+        }
+    }
+
+    private static void gerarPDF(String printer, String pathXML, String pathSave, String paper, String layout, String lines, boolean hasDiscount, boolean hasDrawer) {
+
+        PrinterOptions printerOptions = new PrinterOptions();
+        paperPrinter(paper, printerOptions);
+        PrinterParameters parameters = setPrinterParameters(printer, layout, lines, hasDiscount, hasDrawer);
+
+        try {
+            PrinterNFCe.generatePDF(pathXML, pathSave, parameters, printerOptions);
+        } catch (Exception e1 ) {
+            e1.printStackTrace();
+        }
+    }
+
+    private static PrinterOptions setPrinterOptions(String port, int portSpeed, String paper){
+
+        PrinterOptions printerOptions = new PrinterOptions();
+
+        printerOptions.port = port;
+        printerOptions.portSpeed = portSpeed;
+
+        paperPrinter(paper, printerOptions);
+        return printerOptions;
+    }
+
+    private static PrinterParameters setPrinterParameters(String printer, String layout, String lines, boolean hasDiscount, boolean hasDrawer){
+        PrinterParameters parameters = new PrinterParameters();
+        parameters.setPrinterName(printer);
+        detailPrinter(layout, parameters);
+        linesPrinter(lines, parameters);
+        drawDiscPrinter(hasDiscount, hasDrawer, parameters);
+        return parameters;
+    }
+
+
+
     //Verifica o tipo de impressão
-    public static void detailPrinter(String layout, PrinterParameters parameters){
+    private static void detailPrinter(String layout, PrinterParameters parameters){
 
         if(layout.equalsIgnoreCase("Normal")){
             parameters.setPrintDetail(DetailType.NORMAL);
@@ -158,7 +156,7 @@ public class PrinterNFCeForm {
     }
 
     //Verifica quantas linhas será dividida a parte dos produtos
-    public static void linesPrinter(String lines, PrinterParameters parameters){
+    private static void linesPrinter(String lines, PrinterParameters parameters){
         if(lines.equals("1 Linha")){
             parameters.setPrintProductsLines(ProductsLines.UMA_LINHA);
         }else if(lines.equals("2 Linhas")){
@@ -170,7 +168,7 @@ public class PrinterNFCeForm {
     }
 
     //Verifica se será impresso o desconto, caso tenha, e se abrirá a gaveta ápos a impressão
-    public static void drawDiscPrinter(boolean boxDesc, boolean boxGav, PrinterParameters parameters){
+    private static void drawDiscPrinter(boolean boxDesc, boolean boxGav, PrinterParameters parameters){
         if(boxDesc){
             parameters.setPrintProductsDiscount(YesNoType.YES);
         }else{
@@ -186,7 +184,7 @@ public class PrinterNFCeForm {
     }
 
     //Verifica qual o tamanho do papel utilizado pela impressora
-    public static void paperPrinter(String paper, PrinterOptions printerOptions){
+    private static void paperPrinter(String paper, PrinterOptions printerOptions){
         if(paper.equals("58mm")){
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_58MM;
 
@@ -194,16 +192,6 @@ public class PrinterNFCeForm {
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_80MM;
         }
 
-    }
-
-    //Método que inicia o form
-    public static void main(String args[]) {
-        JFrame frame = new JFrame("PrinterNFCeForm");
-        frame.setResizable(false);
-        frame.setContentPane( new PrinterNFCeForm().panelMain);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 
 }

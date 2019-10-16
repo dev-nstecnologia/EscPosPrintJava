@@ -11,7 +11,6 @@ import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import org.apache.log4j.Logger;
 
 import java.io.ByteArrayInputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 
@@ -33,6 +32,7 @@ public class NFCeJasperPrinter {
 
 
     public byte[] printToPDFByteArray() throws Exception {
+        logger.debug("Criando um arquivo PDF atraves de um Arrat de Bytes!");
         JasperData jasperData = createJasperData();
 
         JasperPDFExporter jasperPDFExporter = new JasperPDFExporter(jasperData);
@@ -40,13 +40,14 @@ public class NFCeJasperPrinter {
     }
 
     public void printToPDFFile(String path) throws Exception {
+        logger.debug("Criando um arquivo PDF atraves de um arquivo!");
         JasperData jasperData = createJasperData();
 
         JasperPDFExporter jasperPDFExporter = new JasperPDFExporter(jasperData);
         jasperPDFExporter.exportToFile(path);
     }
 
-    private JasperData createJasperData() throws UnsupportedEncodingException, JRException {
+    private JasperData createJasperData() throws JRException {
         JasperData jasperData = new JasperData();
 
         if (NFCeJasperParameters.PAPERWIDTH.PAPER_58MM == parameters.paperWidth){
