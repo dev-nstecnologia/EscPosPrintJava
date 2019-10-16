@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f2f19a-e0f1-45b3-9eb1-ec13a006ea43" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commons/PrinterParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commons/PrinterParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commons/PrinterParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/commons/PrinterParameters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../miniprinters/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../miniprinters/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +19,12 @@
   <component name="ProjectId" id="1RyFFy9rRm2VZIvqCzuvkbi2UPM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="27" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="161" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../miniprinters/pom.xml" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -47,8 +40,10 @@
   </component>
   <component name="RunManager">
     <configuration name="PrinterNFCeForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="Java 8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="print.PrinterNFCeForm" />
-      <module name="ImpressaoEscPos" />
+      <module name="SampleNFCePrint" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="print.*" />
@@ -83,10 +78,33 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

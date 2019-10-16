@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ImpressaoEscPos" />
+        <module name="SampleNFCePrint" />
         <module name="ns-mini-printers" />
       </profile>
     </annotationProcessing>
