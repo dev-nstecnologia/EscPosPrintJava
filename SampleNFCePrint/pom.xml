@@ -16,6 +16,12 @@
     </properties>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
 
             <plugin>
@@ -52,7 +58,10 @@
                     </execution>
                 </executions>
             </plugin>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -73,7 +82,10 @@
                     </execution>
                 </executions>
             </plugin>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         </plugins>
     </build>
 
@@ -139,12 +151,15 @@
             <version>1.1.1</version>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
         </dependency>
 
+=======
+>>>>>>> master
     </dependencies>
 
 </project>

@@ -2,9 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f2f19a-e0f1-45b3-9eb1-ec13a006ea43" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/NSCancelamentoNFCe.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/NSCancelamentoNFCe.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCe.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCe.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCeDetalhe.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCeDetalhe.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCeDetalhe2Linhas.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCeDetalhe2Linhas.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCeDetalheDinamico.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCeDetalheDinamico.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCePag.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/NSDanfeNFCePag.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/cabecalhoCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/cabecalhoCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/cabecalhoNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/cabecalhoNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/chaveCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/chaveCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/chaveNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/chaveNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/consumidorCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/consumidorCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/consumidorNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/consumidorNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/infCplCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/infCplCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/infCplNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/infCplNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/infEmissaoCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/infEmissaoCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/infEmissaoNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/infEmissaoNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/nfceProtCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/nfceProtCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper/nfceProtNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper/nfceProtNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/NSCancelamentoNFCe.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/NSCancelamentoNFCe.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/NSDanfeNFCe.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/NSDanfeNFCe.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/NSDanfeNFCeDetalhe2Linhas.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/NSDanfeNFCeDetalhe2Linhas.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/NSDanfeNFCePag.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/NSDanfeNFCePag.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/cabecalhoCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/cabecalhoCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/cabecalhoNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/cabecalhoNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/chaveCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/chaveCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/chaveNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/chaveNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/consumidorCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/consumidorCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/consumidorNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/consumidorNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/infCplCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/infCplCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/infCplNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/infCplNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/infEmissaoCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/infEmissaoCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/infEmissaoNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/infEmissaoNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/nfceProtCompacto.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/nfceProtCompacto.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jasper_58/nfceProtNormal.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jasper_58/nfceProtNormal.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/print/PrinterNFCeForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/printjasper/NFCeJasperPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/printjasper/NFCeJasperPrinter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/../../miniprinters/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../miniprinters/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -99,11 +161,14 @@
           <line>158</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+<<<<<<< HEAD
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java</url>
           <line>114</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+=======
+>>>>>>> master
       </breakpoints>
     </breakpoint-manager>
   </component>

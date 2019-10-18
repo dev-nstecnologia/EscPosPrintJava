@@ -1,8 +1,13 @@
 # EscPosPrintJava
-Exemplo de impressão escpos em java
 
-## Por que utilizar o SampleNFCePrint:
-O SampleNFCePrint serve para gerar, a partir de um XML de NFCe, um PDF
-## Primeiros Passos:
+O SampleNFCePrint foi desenvolvido para que, a partir de um XML de NFCe, um PDF ou array de bytes ESCPOS para imprimir utilizado mini-impressoras. 
+
+## Integrando ao seu sistema
+
+Para utilizar as funções de impressão, você precisa realizar os seguintes passos:
+
+1. Extraia o conteúdo da pasta compactada que você baixou;
+2. Abra seu 
+3. Abra o seu projeto e importe a pasta copiada.
 
 ## Como Utilizar o SampleNFCePrint:
