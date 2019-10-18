@@ -18,7 +18,7 @@
       </component>
       <component id="2c80c" class="javax.swing.JTextField" binding="txtPath">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="8" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag top="10" left="20" bottom="0" right="20" weightx="1.0" weighty="1.0"/>
@@ -30,7 +30,7 @@
       </component>
       <component id="51194" class="javax.swing.JButton" binding="escolherArquivoButton" default-binding="true">
         <constraints>
-          <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="5" left="0" bottom="0" right="0" weightx="4.0" weighty="1.0" ipadx="60" ipady="1"/>
         </constraints>
         <properties>
@@ -60,7 +60,7 @@
       </component>
       <component id="bc54f" class="javax.swing.JButton" binding="imprimirButton" default-binding="true">
         <constraints>
-          <grid row="11" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="50" bottom="30" right="50" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -80,25 +80,16 @@
       </component>
       <component id="f06c6" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="10" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
           <text value="Tamanho do Papel"/>
         </properties>
       </component>
-      <component id="f1182" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="0" left="10" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Tipo de Impressão"/>
-        </properties>
-      </component>
       <component id="e7af5" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
           <gridbag top="40" left="0" bottom="30" right="0" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -115,21 +106,9 @@
           <text value="Imprimir Desconto"/>
         </properties>
       </component>
-      <component id="d63b4" class="javax.swing.JComboBox" binding="cbLayout">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Normal"/>
-            <item value="Ecologica"/>
-          </model>
-        </properties>
-      </component>
       <component id="acd26" class="javax.swing.JComboBox" binding="cbLinhas">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -142,10 +121,11 @@
       </component>
       <component id="34e63" class="javax.swing.JComboBox" binding="cbSerial">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <editable value="false"/>
           <model>
             <item value="110"/>
             <item value="300"/>
@@ -165,7 +145,7 @@
       </component>
       <component id="b0e3c" class="javax.swing.JTextField" binding="txtPorta">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
@@ -176,7 +156,7 @@
       </component>
       <component id="de575" class="javax.swing.JComboBox" binding="cbImpressora">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -194,7 +174,7 @@
       </component>
       <component id="3f7fc" class="javax.swing.JComboBox" binding="cbPapel">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="10" left="10" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -206,7 +186,7 @@
       </component>
       <component id="754e5" class="javax.swing.JCheckBox" binding="boxDrawer">
         <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
           <gridbag top="10" left="0" bottom="0" right="40" weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
@@ -215,13 +195,43 @@
       </component>
       <component id="ca8f7" class="javax.swing.JButton" binding="generatePDFButton">
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="10" left="50" bottom="10" right="50" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <actionCommand value="GeneratePDF"/>
           <text value="Gerar PDF"/>
         </properties>
+      </component>
+      <component id="270e0" class="javax.swing.JCheckBox" binding="boxDetail">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="0" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <hideActionText value="false"/>
+          <selected value="true"/>
+          <text value="Com itens"/>
+        </properties>
+      </component>
+      <component id="445e7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="10" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Caminho logo nota(nao obrigatório)"/>
+        </properties>
+      </component>
+      <component id="6de92" class="javax.swing.JTextField" binding="txtLogo">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="5" right="20" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

@@ -2,6 +2,7 @@ package print;
 
 import br.eti.ns.nsminiprinters.escpos.PrinterOptions;
 import commons.PrinterParameters;
+import printjasper.NFCeJasperParameters;
 import type.DetailType;
 import type.ProductsLines;
 import type.YesNoType;
@@ -24,19 +25,19 @@ public class PrinterNFCeForm extends JFrame{
     private JComboBox cbSerial;
     private JComboBox cbLinhas;
     private JComboBox cbPapel;
-    private JComboBox cbLayout;
     private JButton generatePDFButton;
     private JLabel Impressora;
-
+    private JCheckBox boxDetail;
+    private JTextField txtLogo;
 
 
     //Método que inicia o form
     public static void main(String[] args) {
         try {
             if(args[0].toUpperCase().equals("GERARPDFNFCE")){
-                gerarPDF(args[1], args[2], args[3], args[4], args[5], args[6], Boolean.parseBoolean(args[7]), Boolean.parseBoolean(args[8]));
+                gerarPDF(args[1], args[2], args[3], args[4], args[5], Boolean.parseBoolean(args[6]), Boolean.parseBoolean(args[7]));
             } else if(args[0].toUpperCase().equals("IMPRIMIRNFCE")){
-                imprimir(args[1], args[2], Integer.parseInt(args[3]), args[4], args[5], args[6], args[7],
+                imprimir(args[1], args[2], Integer.parseInt(args[3]), args[4], args[5], args[6], Boolean.parseBoolean(args[7]),
                         Boolean.parseBoolean(args[8]), Boolean.parseBoolean(args[9]));
             }
             System.out.print(Arrays.toString(args));
@@ -85,20 +86,18 @@ public class PrinterNFCeForm extends JFrame{
 
             imprimir(cbImpressora.getSelectedItem().toString(), txtPorta.getText(),
                     Integer.parseInt(cbSerial.getSelectedItem().toString()), txtPath.getText(),
-                    cbPapel.getSelectedItem().toString(), cbLayout.getSelectedItem().toString(),
-                    cbLinhas.getSelectedItem().toString(), boxDiscount.isSelected(), boxDrawer.isSelected());
+                    cbPapel.getSelectedItem().toString(),
+                    cbLinhas.getSelectedItem().toString(), boxDetail.isSelected(), boxDiscount.isSelected(), boxDrawer.isSelected());
         });
 
         generatePDFButton.addActionListener(e -> {
 
-            gerarPDF(cbImpressora.getSelectedItem().toString(), txtPath.getText(), "./PDFs/",
-                    cbPapel.getSelectedItem().toString(), cbLayout.getSelectedItem().toString(),
-                    cbLinhas.getSelectedItem().toString(), boxDiscount.isSelected(), boxDrawer.isSelected());
+            gerarPDF(txtPath.getText(), "./PDFs/",  txtLogo.getText(), cbPapel.getSelectedItem().toString(), cbLinhas.getSelectedItem().toString(), boxDiscount.isSelected(), boxDetail.isSelected());
         });
     }
 
 
-    private static void imprimir(String printer, String port, int portSpeed, String pathXML, String paper, String layout, String lines, boolean hasDiscount, boolean hasDrawer){
+    private static void imprimir(String printer, String port, int portSpeed, String pathXML, String paper, String lines, boolean layout, boolean hasDiscount, boolean hasDrawer){
         PrinterOptions printerOptions = setPrinterOptions(port, portSpeed, paper);
         PrinterParameters parameters = setPrinterParameters(printer, layout, lines, hasDiscount, hasDrawer);
         try {
@@ -108,14 +107,27 @@ public class PrinterNFCeForm extends JFrame{
         }
     }
 
-    private static void gerarPDF(String printer, String pathXML, String pathSave, String paper, String layout, String lines, boolean hasDiscount, boolean hasDrawer) {
+    private static void gerarPDF(String pathXML, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail) {
+        NFCeJasperParameters parameters = new NFCeJasperParameters();
+        if(paper.equals("58mm")){
+            parameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_58MM;
 
-        PrinterOptions printerOptions = new PrinterOptions();
-        paperPrinter(paper, printerOptions);
-        PrinterParameters parameters = setPrinterParameters(printer, layout, lines, hasDiscount, hasDrawer);
+        }else{
+            parameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_80MM;
+        }
+        if(lines.equals("1 Linha") || lines.equals("1")){
+            parameters.printItemsLines = 1;
+        }else if(lines.equals("2 Linhas") || lines.equals("2")){
+            parameters.printItemsLines = 2;
+        }else{
+            parameters.printItemsLines = 3;
+        }
+
+        parameters.printItemDiscount = hasDiscount;
+        parameters.printDetail = hasDetail;
 
         try {
-            PrinterNFCe.generatePDF(pathXML, pathSave, parameters, printerOptions);
+            PrinterNFCe.generatePDF(pathXML, pathSavePDF, pathLogo, parameters);
         } catch (Exception e1 ) {
             e1.printStackTrace();
         }
@@ -132,7 +144,7 @@ public class PrinterNFCeForm extends JFrame{
         return printerOptions;
     }
 
-    private static PrinterParameters setPrinterParameters(String printer, String layout, String lines, boolean hasDiscount, boolean hasDrawer){
+    private static PrinterParameters setPrinterParameters(String printer, boolean layout, String lines, boolean hasDiscount, boolean hasDrawer){
         PrinterParameters parameters = new PrinterParameters();
         parameters.setPrinterName(printer);
         detailPrinter(layout, parameters);
@@ -141,18 +153,15 @@ public class PrinterNFCeForm extends JFrame{
         return parameters;
     }
 
-
-
     //Verifica o tipo de impressão
-    private static void detailPrinter(String layout, PrinterParameters parameters){
+    private static void detailPrinter(boolean layout, PrinterParameters parameters){
 
-        if(layout.equalsIgnoreCase("Normal")){
+        if (layout){
             parameters.setPrintDetail(DetailType.NORMAL);
-            parameters.setPrintLayoutIsNormal(true);
-        }else{
+        } else {
             parameters.setPrintDetail(DetailType.ECOLOGICA);
-            parameters.setPrintLayoutIsNormal(false);
         }
+        parameters.setPrintLayoutIsNormal(layout);
     }
 
     //Verifica quantas linhas será dividida a parte dos produtos
@@ -169,15 +178,15 @@ public class PrinterNFCeForm extends JFrame{
 
     //Verifica se será impresso o desconto, caso tenha, e se abrirá a gaveta ápos a impressão
     private static void drawDiscPrinter(boolean boxDesc, boolean boxGav, PrinterParameters parameters){
-        if(boxDesc){
+        if (boxDesc){
             parameters.setPrintProductsDiscount(YesNoType.YES);
-        }else{
+        } else {
             parameters.setPrintProductsDiscount(YesNoType.NO);
         }
 
-        if(boxGav){
+        if (boxGav){
             parameters.setOpenDrawer(YesNoType.YES);
-        }else{
+        } else {
             parameters.setOpenDrawer(YesNoType.NO);
         }
 
@@ -187,8 +196,7 @@ public class PrinterNFCeForm extends JFrame{
     private static void paperPrinter(String paper, PrinterOptions printerOptions){
         if(paper.equals("58mm")){
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_58MM;
-
-        }else{
+        } else {
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_80MM;
         }
 

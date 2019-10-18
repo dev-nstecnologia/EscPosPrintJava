@@ -18,33 +18,20 @@ import java.util.Map;
  */
 public class NFCeJasperParameters{
     
-    public String logoEmit;
-    
-    public boolean imprimeDetalhe;
-        
-    public String urlConsulta; //
-    
-    public InputStream qrCodeImage; //
-    
-    public String qrCodePath; //
-    
-    public boolean isProc; //
-
-    public int printItemsLines;
-
-    public boolean printItemDiscount;
-
-    public int itemsCount;
-
-    public String valorRec;
-
-    public String valorTroco; //
-
-    public boolean isConsumerTicket = true;
-
-    public PAPERWIDTH paperWidth; //
-
-    public int formatoLayoutImpressao = 1;
+    public String logoEmit; // Logo do Emitente
+    public boolean printDetail; // Imprimir com detalhe, ou seja, com os itens *
+    public String urlConsulta; // Url para consulta da NFCe *
+    public InputStream qrCodeImage; // Imagem em bytes do qr code *
+    public String qrCodePath; // Url do qr code *
+    public boolean isProc; // Se o xml ja foi ou nao processado pela sefaz *
+    public int printItemsLines; //*
+    public boolean printItemDiscount; // *
+    public int itemsCount; // *
+    public String valueRec; // *
+    public String valueTroco; // Da o valor do troco, se houver *
+    public boolean isConsumerTicket; // Se a nota é do consumidor ou nao *
+    public PAPERWIDTH paperWidth; // Tamanho do papel *
+    public int formatoLayoutImpressao = 1; // Formato da impressao se é normal ou ecologica
 
     /**
      * Creates a MAP with the value of the properties.
@@ -56,7 +43,7 @@ public class NFCeJasperParameters{
         Map<String, Object> map = new HashMap();
 
         map.put("LOGO_EMITENTE", logoEmit);
-        map.put("IMPRIME_DETALHE", imprimeDetalhe);
+        map.put("IMPRIME_DETALHE", printDetail);
 
         if (PAPERWIDTH.PAPER_58MM == paperWidth){
             map.put("SUBREPORT_DIR", "jasper_58/");
@@ -72,8 +59,8 @@ public class NFCeJasperParameters{
         map.put("IMPRESSAO_PROD_LINHAS", printItemsLines);
         map.put("IMPRIME_DESC_ITEM", printItemDiscount);
         map.put("QUANT_ITENS", itemsCount);
-        map.put("VALOR_REC", valorRec);
-        map.put("VALOR_TROCO", valorTroco);
+        map.put("VALOR_REC", valueRec);
+        map.put("VALOR_TROCO", valueTroco);
         map.put("IS_CONSUMER_TICKET", isConsumerTicket);
         map.put("FORMATO_LAYOUT_IMPRESSAO", formatoLayoutImpressao);
         return map;

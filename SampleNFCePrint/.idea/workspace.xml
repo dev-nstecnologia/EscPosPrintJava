@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55f2f19a-e0f1-45b3-9eb1-ec13a006ea43" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JarsAndLibs/SampleNFCePrint-1.0-with-dependencies.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JarsAndLibs/SampleNFCePrint-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../JarsAndLibs/SampleNFCePrint-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JarsAndLibs/lib/xml-apis-1.3.02.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../miniprinters/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../miniprinters/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,12 +27,13 @@
   <component name="ProjectId" id="1RyFFy9rRm2VZIvqCzuvkbi2UPM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="27" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="161" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="278" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="357" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../miniprinters/pom.xml" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -90,19 +99,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java</url>
-          <line>158</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java</url>
-          <line>114</line>
+          <line>116</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/printjasper/NFCeJasperPrinter.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCeForm.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/print/PrinterNFCe.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

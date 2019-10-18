@@ -8,7 +8,6 @@ package printjasper;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
-import org.apache.log4j.Logger;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
@@ -19,9 +18,6 @@ import java.nio.charset.StandardCharsets;
  * @author AlissonLima
  */
 public class NFCeJasperPrinter {
-
-    private final static Logger logger = Logger.getLogger(NFCeJasperPrinter.class);
-    
     private final String nfeContent;
     private final NFCeJasperParameters parameters;
 
@@ -32,27 +28,21 @@ public class NFCeJasperPrinter {
 
 
     public byte[] printToPDFByteArray() throws Exception {
-        logger.debug("Criando um arquivo PDF atraves de um Arrat de Bytes!");
-        JasperData jasperData = createJasperData();
 
-        JasperPDFExporter jasperPDFExporter = new JasperPDFExporter(jasperData);
+        JasperPDFExporter jasperPDFExporter = new JasperPDFExporter(createJasperData());
         return jasperPDFExporter.exportToByteArray();
     }
 
     public void printToPDFFile(String path) throws Exception {
-        logger.debug("Criando um arquivo PDF atraves de um arquivo!");
-        JasperData jasperData = createJasperData();
-
-        JasperPDFExporter jasperPDFExporter = new JasperPDFExporter(jasperData);
+        JasperPDFExporter jasperPDFExporter = new JasperPDFExporter(createJasperData());
         jasperPDFExporter.exportToFile(path);
     }
 
     private JasperData createJasperData() throws JRException {
         JasperData jasperData = new JasperData();
 
-        if (NFCeJasperParameters.PAPERWIDTH.PAPER_58MM == parameters.paperWidth){
+        if (NFCeJasperParameters.PAPERWIDTH.PAPER_58MM.equals(parameters.paperWidth)) {
             jasperData.jasperInputStream = NFCeJasperPrinter.class.getClassLoader().getResourceAsStream("jasper_58/NSDanfeNFCe.jasper");
-
         } else {
             jasperData.jasperInputStream = NFCeJasperPrinter.class.getClassLoader().getResourceAsStream("jasper/NSDanfeNFCe.jasper");
         }
