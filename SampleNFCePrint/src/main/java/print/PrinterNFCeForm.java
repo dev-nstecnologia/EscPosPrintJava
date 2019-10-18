@@ -107,54 +107,30 @@ public class PrinterNFCeForm extends JFrame{
         }
     }
 
-    private static void gerarPDF(String pathXML, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail) {
-        NFCeJasperParameters parameters = new NFCeJasperParameters();
-        if(paper.equals("58mm")){
-            parameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_58MM;
-
-        }else{
-            parameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_80MM;
-        }
-        if(lines.equals("1 Linha") || lines.equals("1")){
-            parameters.printItemsLines = 1;
-        }else if(lines.equals("2 Linhas") || lines.equals("2")){
-            parameters.printItemsLines = 2;
-        }else{
-            parameters.printItemsLines = 3;
-        }
-
-        parameters.printItemDiscount = hasDiscount;
-        parameters.printDetail = hasDetail;
-
-        try {
-            PrinterNFCe.generatePDF(pathXML, pathSavePDF, pathLogo, parameters);
-        } catch (Exception e1 ) {
-            e1.printStackTrace();
-        }
-    }
-
+    // Define as opções da impressora
     private static PrinterOptions setPrinterOptions(String port, int portSpeed, String paper){
 
         PrinterOptions printerOptions = new PrinterOptions();
-
         printerOptions.port = port;
         printerOptions.portSpeed = portSpeed;
+        paperPrinterOptions(paper, printerOptions);
 
-        paperPrinter(paper, printerOptions);
         return printerOptions;
     }
 
+    // Define os parametros de impressao
     private static PrinterParameters setPrinterParameters(String printer, boolean layout, String lines, boolean hasDiscount, boolean hasDrawer){
         PrinterParameters parameters = new PrinterParameters();
         parameters.setPrinterName(printer);
-        detailPrinter(layout, parameters);
-        linesPrinter(lines, parameters);
-        drawDiscPrinter(hasDiscount, hasDrawer, parameters);
+        detailPrinterParameters(layout, parameters);
+        linesPrinterParameters(lines, parameters);
+        drawDiscPrinterParameters(hasDiscount, hasDrawer, parameters);
+
         return parameters;
     }
 
-    //Verifica o tipo de impressão
-    private static void detailPrinter(boolean layout, PrinterParameters parameters){
+    // Verifica o tipo de impressão
+    private static void detailPrinterParameters(boolean layout, PrinterParameters parameters){
 
         if (layout){
             parameters.setPrintDetail(DetailType.NORMAL);
@@ -164,11 +140,11 @@ public class PrinterNFCeForm extends JFrame{
         parameters.setPrintLayoutIsNormal(layout);
     }
 
-    //Verifica quantas linhas será dividida a parte dos produtos
-    private static void linesPrinter(String lines, PrinterParameters parameters){
-        if(lines.equals("1 Linha")){
+    // Verifica quantas linhas será dividida a parte dos produtos
+    private static void linesPrinterParameters(String lines, PrinterParameters parameters){
+        if(lines.equals("1 Linha") || lines.equals("1")){
             parameters.setPrintProductsLines(ProductsLines.UMA_LINHA);
-        }else if(lines.equals("2 Linhas")){
+        }else if(lines.equals("2 Linhas")|| lines.equals("2")){
             parameters.setPrintProductsLines(ProductsLines.DUAS_LINHAS);
         }else{
             parameters.setPrintProductsLines(ProductsLines.LINHAS_DINAMICAS);
@@ -176,8 +152,8 @@ public class PrinterNFCeForm extends JFrame{
 
     }
 
-    //Verifica se será impresso o desconto, caso tenha, e se abrirá a gaveta ápos a impressão
-    private static void drawDiscPrinter(boolean boxDesc, boolean boxGav, PrinterParameters parameters){
+    // Verifica se será impresso o desconto, caso tenha, e se abrirá a gaveta ápos a impressão
+    private static void drawDiscPrinterParameters(boolean boxDesc, boolean boxGav, PrinterParameters parameters){
         if (boxDesc){
             parameters.setPrintProductsDiscount(YesNoType.YES);
         } else {
@@ -192,14 +168,62 @@ public class PrinterNFCeForm extends JFrame{
 
     }
 
-    //Verifica qual o tamanho do papel utilizado pela impressora
-    private static void paperPrinter(String paper, PrinterOptions printerOptions){
-        if(paper.equals("58mm")){
+    // Verifica qual o tamanho do papel utilizado pela impressora
+    private static void paperPrinterOptions(String paper, PrinterOptions printerOptions){
+        if(paper.equals("58mm") || paper.equals("55")){
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_58MM;
         } else {
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_80MM;
         }
 
+    }
+
+
+
+
+    private static void gerarPDF(String pathXML, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail) {
+
+       NFCeJasperParameters parameters = setJasperParameters(paper, lines, hasDiscount, hasDetail);
+        try {
+            PrinterNFCe.generatePDF(pathXML, pathSavePDF, pathLogo, parameters);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Define os parametros de configuração do PDF
+    private static NFCeJasperParameters setJasperParameters(String paper, String lines, boolean hasDiscount, boolean hasDetail){
+
+        NFCeJasperParameters parameters = new NFCeJasperParameters();
+        parameters.printItemDiscount = hasDiscount;
+        parameters.printDetail = hasDetail;
+        if (parameters.printDetail) {
+            linesJasperParameters(lines, parameters);
+        }
+        paperJasperParameters(paper, parameters);
+
+        return parameters;
+    }
+
+    // Define o papel que será utilizado para molde do PDF
+    private static void paperJasperParameters(String paper, NFCeJasperParameters parameters){
+        if (paper.equals("58mm") || paper.equals("58")){
+            parameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_58MM;
+
+        } else {
+            parameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_80MM;
+        }
+    }
+
+    // Determina quantas linhas terá as linhas dos produtos
+    private static void linesJasperParameters(String lines, NFCeJasperParameters parameters){
+        if (lines.equals("1 Linha") || lines.equals("1")) {
+            parameters.printItemsLines = 1;
+        } else if (lines.equals("2 Linhas") || lines.equals("2")) {
+            parameters.printItemsLines = 2;
+        } else {
+            parameters.printItemsLines = 3;
+        }
     }
 
 }

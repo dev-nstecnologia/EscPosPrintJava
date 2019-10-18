@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package type;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -21,6 +16,7 @@ public enum ProductsLines {
     @XmlEnumValue("3") LINHAS_DINAMICAS(3, "Linhas dinâmicas");
 
     private final int value;
+
     private final String description;
 
     ProductsLines(int value, String description) {
@@ -30,6 +26,9 @@ public enum ProductsLines {
 
     public int getValue() {
         return value;
+    }
+    public String getDescription() {
+        return description;
     }
 
 }

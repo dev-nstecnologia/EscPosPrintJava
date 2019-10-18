@@ -18,16 +18,16 @@ import java.util.Map;
  */
 public class NFCeJasperParameters{
     
-    public String logoEmit; // Logo do Emitente
+    public String logoEmit; // Logo do Emitente *NAO PRODUZIDO
     public boolean printDetail; // Imprimir com detalhe, ou seja, com os itens *
     public String urlConsulta; // Url para consulta da NFCe *
     public InputStream qrCodeImage; // Imagem em bytes do qr code *
     public String qrCodePath; // Url do qr code *
     public boolean isProc; // Se o xml ja foi ou nao processado pela sefaz *
-    public int printItemsLines; //*
-    public boolean printItemDiscount; // *
-    public int itemsCount; // *
-    public String valueRec; // *
+    public int printItemsLines; // Numeros de linhas na impressao*
+    public boolean printItemDiscount; // Se irá aparecer a descrição dos intens ou não*
+    public int itemsCount; // Quantidade de itens na nota*
+    public String valueRec; // Valor do recibo, se houver*
     public String valueTroco; // Da o valor do troco, se houver *
     public boolean isConsumerTicket; // Se a nota é do consumidor ou nao *
     public PAPERWIDTH paperWidth; // Tamanho do papel *

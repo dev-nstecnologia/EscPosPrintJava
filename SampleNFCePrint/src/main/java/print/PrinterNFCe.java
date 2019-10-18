@@ -34,7 +34,7 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class PrinterNFCe {
 
-    //Método que irá imprimir a NFC-e
+    // Método que irá imprimir a NFC-e
     public static void printNFCe(String path, PrinterParameters parameters, PrinterOptions printerOptions) throws Exception {
         System.out.print("\nComeçando a impressão...");
         Object nfce = XMLtoTNFCe(path);
@@ -80,15 +80,13 @@ public class PrinterNFCe {
         }
     }
 
-    //Método que gera uma NFC-e em PDF
+    // Método que gera uma NFC-e em PDF
     public static void generatePDF(String path, String pathSavePDF, String pathLogo, NFCeJasperParameters parameters) throws Exception {
         System.out.print("\nGerando PDF a partir de uma NFCe...");
 
         Object nfce = XMLtoTNFCe(path);
 
-        if (Objects.equals(nfce, null)){
-            JOptionPane.showMessageDialog(null, "O XML informado não é uma NFCe, tente novamente");
-        } else {
+        if (!Objects.equals(nfce, null)){
             TNFe nota;
             if (nfce.getClass().equals(TNFe.class)) {
                 nota = (TNFe) nfce;
@@ -108,15 +106,17 @@ public class PrinterNFCe {
                 savePDF(parameters, path, pathSavePDF,  nota.getInfNFe().getId() + "-estabelecimento.pdf");
             }
             JOptionPane.showMessageDialog(null, "Geração de PDF feita com sucesso!!!");
+        } else {
+            JOptionPane.showMessageDialog(null, "O XML informado não é uma NFCe, tente novamente");
         }
     }
 
-    //Transforma o xml em objeto NFC-e
+    // Transforma o File XML em objeto TNFe ou TNFeProc
     private static Object XMLtoTNFCe(String fileXML) throws Exception {
 
+        Object tnp;
         try {
             String strXML = new String(Files.readAllBytes(Paths.get(fileXML)));
-            Object tnp;
             if (strXML.contains("nfeProc")) {
 
                 JAXBContext jb = JAXBContext.newInstance(TNfeProc.class);
@@ -137,7 +137,7 @@ public class PrinterNFCe {
         } catch (JAXBException ex) { throw new Exception(ex.toString()); }
     }
 
-    //Testa se esta em contigencia e setta os Jasper Parameters
+    // Testa se esta em contigencia e setta os Jasper Parameters
     private static void setAndGenerateJasperParameters(NFCeJasperParameters jasperParameters, TNFe nfce, String pathLogo) throws Exception {
 
         if(!jasperParameters.paperWidth.equals(NFCeJasperParameters.PAPERWIDTH.PAPER_58MM)) {
@@ -165,25 +165,24 @@ public class PrinterNFCe {
                 }
             }
         }
-        if (!pathLogo.equals("")) {
-            jasperParameters.logoEmit = encodeFileToBase64Binary(pathLogo);
-        }
-
+//        if (!pathLogo.equals("")) {
+//            jasperParameters.logoEmit = encodeFileToBase64Binary(pathLogo);
+//        }
     }
+
+    // Transforma um File em Base64
     private static String encodeFileToBase64Binary(String filePath){
         String logo = null;
         try {
             byte[] fileContent = FileUtils.readFileToByteArray(new File(filePath));
             logo =  Base64.getEncoder().encodeToString(fileContent);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return logo;
     }
 
-    //Salva o PDF gerado pelos Jasper Parameters
+    // Salva o PDF gerado pelos Jasper Parameters
     private static void savePDF(NFCeJasperParameters jasperParameters, String fileXML, String pathToSavePDF, String nameArq) throws Exception {
 
         if(!pathToSavePDF.endsWith("\\")) pathToSavePDF += "\\";
@@ -200,7 +199,7 @@ public class PrinterNFCe {
         nfceJasperPrinter.printToPDFFile(pathToSavePDF+ nameArq);
     }
 
-    //Setta os Prints Parameters
+    // Setta os Prints Parameters NFCe
     private static void setPrinterParameters(PrinterParameters parameters, TNFe tNfe){
         parameters.setNfceContent(tNfe);
         parameters.setUrlConsult(tNfe.getInfNFeSupl().getUrlChave());
@@ -208,6 +207,7 @@ public class PrinterNFCe {
         parameters.setAuthorizationProtocol("");
     }
 
+    // Setta os Prints Parameters com NFCeProc
     private static void setPrinterParameters(PrinterParameters parameters, TNfeProc tNfe){
         parameters.setNfceContent(tNfe.getNFe());
         parameters.setUrlConsult(tNfe.getNFe().getInfNFeSupl().getUrlChave());
