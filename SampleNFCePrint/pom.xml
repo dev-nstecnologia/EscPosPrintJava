@@ -53,14 +53,6 @@
                     </execution>
                 </executions>
             </plugin>
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> master
->>>>>>> master
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -81,14 +73,7 @@
                     </execution>
                 </executions>
             </plugin>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> master
->>>>>>> master
         </plugins>
     </build>
 
@@ -154,26 +139,18 @@
             <version>1.1.1</version>
         </dependency>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
         </dependency>
 
-<<<<<<< HEAD
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
-=======
-=======
->>>>>>> master
->>>>>>> master
+
     </dependencies>
 
 </project>
