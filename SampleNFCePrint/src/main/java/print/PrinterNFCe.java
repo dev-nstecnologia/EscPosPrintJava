@@ -6,6 +6,10 @@ import br.eti.ns.nsminiprinters.escpos.PrinterOptions;
 import br.eti.ns.nsminiprinters.escpos.specs.PrinterSpec;
 import br.eti.ns.nsminiprinters.escpos.specs.PrinterSpecFactory;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import commons.*;
 
 import java.io.*;
@@ -15,6 +19,7 @@ import java.util.Base64;
 import java.util.Objects;
 
 import jssc.SerialPortException;
+
 import org.apache.commons.io.FileUtils;
 import printjasper.NFCeJasperParameters;
 import printjasper.NFCeJasperPrinter;
@@ -25,6 +30,7 @@ import schema.TNfeProc;
 import javax.swing.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
@@ -34,10 +40,13 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class PrinterNFCe {
 
+    private static ObjectMapper mapper;
+    private final static Object nfeMapperLock = new Object();
+
     // Método que irá imprimir a NFC-e
     public static void printNFCe(String path, PrinterParameters parameters, PrinterOptions printerOptions) throws Exception {
         System.out.print("\nComeçando a impressão...");
-        Object nfce = XMLtoTNFCe(path);
+        Object nfce = XMLToTNFe(path);
 
         if(!Objects.equals(nfce, null)){
 
@@ -82,12 +91,21 @@ public class PrinterNFCe {
 
     // Método que gera uma NFC-e em PDF
     public static void generatePDF(String path, String pathSavePDF, String pathLogo, NFCeJasperParameters parameters) throws Exception {
-        System.out.print("\nGerando PDF a partir de uma NFCe...");
 
-        Object nfce = XMLtoTNFCe(path);
+        System.out.print("Gerando PDF a partir de uma NFCe...\n");
+        Object nfce;
+        TNFe nota;
+        String content = new String(Files.readAllBytes(Paths.get(path)));
+
+        if (!path.contains(".xml") && path.contains(".json")) {
+            nfce = JSONToTNFe(content);
+            content = TNFeToXML((TNFe) nfce).trim();
+        }else{
+            nfce = XMLToTNFe(content);
+        }
 
         if (!Objects.equals(nfce, null)){
-            TNFe nota;
+
             if (nfce.getClass().equals(TNFe.class)) {
                 nota = (TNFe) nfce;
                 parameters.isProc = false;
@@ -96,27 +114,52 @@ public class PrinterNFCe {
                 nota = tNFeProc.getNFe();
                 parameters.isProc = true;
             }
-            setAndGenerateJasperParameters(parameters, nota, pathLogo);
-            parameters.isConsumerTicket = true;
-            savePDF(parameters, path, pathSavePDF, nota.getInfNFe().getId() + "-consumidor.pdf");
+            setAndGenerateJasperParameters(parameters, nota, pathLogo, true);
+            savePDF(parameters, content, pathSavePDF, nota.getInfNFe().getId() + "-consumidor.pdf");
 
             if (!nota.getInfNFe().getIde().getTpEmis().equals("1")) {
-                setAndGenerateJasperParameters(parameters, nota, pathLogo);
-                parameters.isConsumerTicket = false;
-                savePDF(parameters, path, pathSavePDF,  nota.getInfNFe().getId() + "-estabelecimento.pdf");
+                setAndGenerateJasperParameters(parameters, nota, pathLogo, false);
+                savePDF(parameters, content, pathSavePDF,  nota.getInfNFe().getId() + "-estabelecimento.pdf");
             }
             JOptionPane.showMessageDialog(null, "Geração de PDF feita com sucesso!!!");
         } else {
             JOptionPane.showMessageDialog(null, "O XML informado não é uma NFCe, tente novamente");
+            throw new Exception("XML Informado não é um NFCe!");
         }
     }
 
+    private static TNFe JSONToTNFe(String nfeJson) {
+        TNFe tnFe;
+        try {
+            nfeJson = getMapper().readTree(nfeJson).get("NFe").toString();
+            tnFe = getMapper().readValue(nfeJson, TNFe.class);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            tnFe = null;
+        }
+        return tnFe;
+    }
+
+    private static ObjectMapper getMapper(){
+        if (mapper == null){
+            synchronized (nfeMapperLock){
+                if (mapper == null) {
+                    mapper = new ObjectMapper();
+                    mapper.setAnnotationIntrospector(new JaxbAnnotationIntrospector(mapper.getTypeFactory()));
+                    mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+                    mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+                    mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+                }
+            }
+        }
+        return mapper;
+    }
+
     // Transforma o File XML em objeto TNFe ou TNFeProc
-    private static Object XMLtoTNFCe(String fileXML) throws Exception {
+    private static Object XMLToTNFe(String strXML) throws Exception {
 
         Object tnp;
         try {
-            String strXML = new String(Files.readAllBytes(Paths.get(fileXML)));
             if (strXML.contains("nfeProc")) {
 
                 JAXBContext jb = JAXBContext.newInstance(TNfeProc.class);
@@ -137,13 +180,23 @@ public class PrinterNFCe {
         } catch (JAXBException ex) { throw new Exception(ex.toString()); }
     }
 
+    private static String TNFeToXML(TNFe nfce) throws JAXBException {
+
+        JAXBContext contextObj = JAXBContext.newInstance(TNFe.class);
+        Marshaller marshallerObj = contextObj.createMarshaller();
+        marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        StringWriter sw = new StringWriter();
+        marshallerObj.marshal(nfce, sw);
+        return sw.toString();
+    }
+
     // Testa se esta em contigencia e setta os Jasper Parameters
-    private static void setAndGenerateJasperParameters(NFCeJasperParameters jasperParameters, TNFe nfce, String pathLogo) throws Exception {
+    private static void setAndGenerateJasperParameters(NFCeJasperParameters jasperParameters, TNFe nfce, String pathLogo, boolean isConsumerTicket) throws Exception {
 
         if(!jasperParameters.paperWidth.equals(NFCeJasperParameters.PAPERWIDTH.PAPER_58MM)) {
             jasperParameters.paperWidth = NFCeJasperParameters.PAPERWIDTH.PAPER_80MM;
         }
-
+        jasperParameters.isConsumerTicket = isConsumerTicket;
         jasperParameters.qrCodePath = nfce.getInfNFeSupl().getQrCode();
         jasperParameters.urlConsulta = nfce.getInfNFeSupl().getUrlChave();
         jasperParameters.qrCodeImage = QRCodeHelper.generateQRCodeToPNGStream(jasperParameters.qrCodePath);
@@ -183,15 +236,14 @@ public class PrinterNFCe {
     }
 
     // Salva o PDF gerado pelos Jasper Parameters
-    private static void savePDF(NFCeJasperParameters jasperParameters, String fileXML, String pathToSavePDF, String nameArq) throws Exception {
+    private static void savePDF(NFCeJasperParameters jasperParameters, String content, String pathToSavePDF, String nameArq) throws Exception {
 
         if(!pathToSavePDF.endsWith("\\")) pathToSavePDF += "\\";
 
         File localSalvar = new File(pathToSavePDF);
         if (!localSalvar.exists())localSalvar.mkdirs();
 
-        String strXML = new String(Files.readAllBytes(Paths.get(fileXML)));
-        NFCeJasperPrinter nfceJasperPrinter = new NFCeJasperPrinter(strXML, jasperParameters);
+        NFCeJasperPrinter nfceJasperPrinter = new NFCeJasperPrinter(content, jasperParameters);
 
         File arq = new File(pathToSavePDF + nameArq);
         if(arq.exists()) arq.delete();

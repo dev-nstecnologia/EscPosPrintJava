@@ -67,7 +67,7 @@ public class PrinterNFCeForm extends JFrame{
             jFC.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
             //Cria um filtro para somente pegar .xml
-            FileNameExtensionFilter filter = new FileNameExtensionFilter(".xml", "xml");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(".xml .json", "xml", "json");
             jFC.setFileFilter(filter);
 
             //Abre uma janela para ser pego o arquivo
@@ -95,7 +95,6 @@ public class PrinterNFCeForm extends JFrame{
             gerarPDF(txtPath.getText(), "./PDFs/",  txtLogo.getText(), cbPapel.getSelectedItem().toString(), cbLinhas.getSelectedItem().toString(), boxDiscount.isSelected(), boxDetail.isSelected());
         });
     }
-
 
     private static void imprimir(String printer, String port, int portSpeed, String pathXML, String paper, String lines, boolean layout, boolean hasDiscount, boolean hasDrawer){
         PrinterOptions printerOptions = setPrinterOptions(port, portSpeed, paper);
@@ -181,11 +180,11 @@ public class PrinterNFCeForm extends JFrame{
 
 
 
-    private static void gerarPDF(String pathXML, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail) {
+    private static void gerarPDF(String pathConteudo, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail) {
 
        NFCeJasperParameters parameters = setJasperParameters(paper, lines, hasDiscount, hasDetail);
         try {
-            PrinterNFCe.generatePDF(pathXML, pathSavePDF, pathLogo, parameters);
+            PrinterNFCe.generatePDF(pathConteudo, pathSavePDF, pathLogo, parameters);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -55,8 +55,8 @@ public class NFCeJasperPrinter {
         }else{
             jrXmlQuery = "/NFe";
         }
-
-        jasperData.jrDataSource = new JRXmlDataSource(new ByteArrayInputStream(nfeContent.getBytes(StandardCharsets.UTF_8)), jrXmlQuery);
+        ByteArrayInputStream byteArrayIS = new ByteArrayInputStream(nfeContent.getBytes(StandardCharsets.UTF_8));
+        jasperData.jrDataSource = new JRXmlDataSource(byteArrayIS, jrXmlQuery);
 
         return jasperData;
     }

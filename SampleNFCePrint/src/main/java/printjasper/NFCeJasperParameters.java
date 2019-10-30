@@ -25,7 +25,7 @@ public class NFCeJasperParameters{
     public String qrCodePath; // Url do qr code *
     public boolean isProc; // Se o xml ja foi ou nao processado pela sefaz *
     public int printItemsLines; // Numeros de linhas na impressao*
-    public boolean printItemDiscount; // Se irá aparecer a descrição dos intens ou não*
+    public boolean printItemDiscount; // Se tera desconto dos itens ou não*
     public int itemsCount; // Quantidade de itens na nota*
     public String valueRec; // Valor do recibo, se houver*
     public String valueTroco; // Da o valor do troco, se houver *
