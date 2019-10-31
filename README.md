@@ -1,6 +1,6 @@
 # EscPosPrintJava
 
-O SampleNFCePrint foi desenvolvido para que, a partir de um XML de NFCe, um PDF ou array de bytes ESCPOS para imprimir utilizado mini-impressoras. 
+O SampleNFCePrint foi desenvolvido para que, a partir de um XML ou um JSON de NFCe, seja criado um PDF ou array de bytes ESCPOS conseguindo fazer a utilização de uma mini-impressoras. 
 
 ## Integrando ao seu sistema
 
