@@ -169,7 +169,7 @@ public class PrinterNFCeForm extends JFrame{
 
     // Verifica qual o tamanho do papel utilizado pela impressora
     private static void paperPrinterOptions(String paper, PrinterOptions printerOptions){
-        if(paper.equals("58mm") || paper.equals("55")){
+        if(paper.equals("58mm") || paper.equals("58")){
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_58MM;
         } else {
             printerOptions.paperWidth = PrinterOptions.PAPERWIDTH.PAPER_80MM;
