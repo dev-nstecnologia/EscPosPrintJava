@@ -19,16 +19,16 @@ Para realizar a geração de PDF a partir de uma NFCe, você poderá utilizar a 
 
 #### Parâmetros:
 String pathConteudo, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail
-Parametros   | Descrição
-:-----------:|:-----------
-operacao     | Qual a operação que deve ser feita:<ul><li>**GERARPDFNFCE**</li></ul>
-pathConteudo | Caminho do arquivo que xml ou json da NFCe .
-pathSave     | Caminho da pasta onde será salvo o PDF gerado
-pathLogo     | Caminho do PNG do logo do emitente(*ainda não implementado, deve-se por o valor ""*)
-paper        | Tamanho do papel de NFCe em mm:<ul><li>**58**</li><li>**80**</li></ul>
-lines        | Números de linhas que os itens devem apresentar:<ul><li>**1**(Uma linha)</li><li>**2**(Duas linhas)</li><li>**3**(Linhas Dinâmicas)</li></ul>
-hasDiscount  | Se terá disconto na nota ou não:<ul><li>**true**</li><li>**false**</li></ul>
-hasDetail    | Se deve imprimir os itens da nota:<ul><li>**true**</li><li>**false**</li></ul>
+Parametros       | Descrição
+:---------------:|:-----------
+operacao         | Qual a operação que deve ser feita:<ul><li>**GERARPDFNFCE**</li></ul>
+pathConteudo     | Caminho do arquivo que xml ou json da NFCe .
+pathSave         | Caminho da pasta onde será salvo o PDF gerado
+pathLogo         | Caminho do PNG do logo do emitente(*ainda não implementado, deve-se por o valor ""*)
+paper            | Tamanho do papel de NFCe em mm:<ul><li>**58**</li><li>**80**</li></ul>
+lines            | Números de linhas que os itens devem apresentar:<ul><li>**1**(Uma linha)</li><li>**2**(Duas linhas)</li><li>**3**(Linhas Dinâmicas)</li></ul>
+hasDiscount      | Se terá disconto na nota ou não:<ul><li>**true**</li><li>**false**</li></ul>
+hasDetail        | Se deve imprimir os itens da nota:<ul><li>**true**</li><li>**false**</li></ul>
 
 #### Exemplo de chamada:
 Após ter todos os parâmetros listados acima, você deverá fazer a chamada da função pelo cmd. Veja o exemplo abaixo:
