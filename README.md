@@ -55,7 +55,7 @@ portSpeed    | Velocidade da porta COM que utilizará: <ul><li>**110**</li><li>*
 pathContent  | Caminho do conteudo do arquivo XML ou JSON
 paper        | Tamanho do papel de NFCe em mm:<ul><li>**58**</li><li>**80**</li></ul>
 lines        | Números de linhas que os itens devem apresentar:<ul><li>**1**(Uma linha)</li><li>**2**(Duas linhas)</li><li>**3**(Linhas Dinâmicas)</li></ul>
-layout       | Se será uma impressão normal(true) ou ecologica(false)
+layout       | Se será uma impressão:<ul><li>**true** - Impressão Normal</li><li>**false** - Impressão Ecologica</li></ul>
 hasDiscount  | Se terá disconto na nota ou não:<ul><li>**true**</li><li>**false**</li></ul>
 hasDrawer    | Se deve abrir a registradora: <ul><li>**true**</li><li>**false**</li></ul>
 
