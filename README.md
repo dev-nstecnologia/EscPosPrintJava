@@ -19,6 +19,7 @@ Para realizar a geração de PDF a partir de uma NFCe, você poderá utilizar a 
 
 #### Parâmetros:
 String pathConteudo, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail
+
 Parametros       | Descrição
 :---------------:|:-----------
 operacao         | Qual a operação que deve ser feita:<ul><li>**GERARPDFNFCE**</li></ul>
@@ -43,6 +44,7 @@ Para realizar a geração de PDF a partir de uma NFCe, você poderá utilizar a 
 
 #### Parâmetros:
 String pathConteudo, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail
+
 Parametros   | Descrição
 :-----------:|:-----------
 operacao     | Qual a operação que deve ser feita:<ul><li>**GERARPDFNFCE**</li></ul>
