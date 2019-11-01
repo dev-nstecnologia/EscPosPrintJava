@@ -18,7 +18,6 @@ Para utilizar as funções de impressão ou geração de PDF utilizando JARs, vo
 Para realizar a geração de PDF a partir de uma NFCe, você poderá utilizar a função gerarPDF. Veja abaixo sobre os parâmetros necessários, e um exemplo de chamada do método.
 
 #### Parâmetros:
-String pathConteudo, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail
 
 Parametros       | Descrição
 :---------------:|:-----------
@@ -43,7 +42,6 @@ A função de geração de PDF fará a converção do XML acima para um document
 Para realizar a geração de PDF a partir de uma NFCe, você poderá utilizar a função gerarPDF. Veja abaixo sobre os parâmetros necessários, e um exemplo de chamada do método.
 
 #### Parâmetros:
-String pathConteudo, String pathSavePDF, String pathLogo, String paper, String lines, boolean hasDiscount, boolean hasDetail
 
 Parametros   | Descrição
 :-----------:|:-----------
