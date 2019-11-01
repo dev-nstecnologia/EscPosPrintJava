@@ -2,7 +2,9 @@
 
 O SampleNFCePrint foi desenvolvido para que, a partir de um XML ou um JSON de NFCe, seja criado um PDF ou array de bytes ESCPOS conseguindo fazer a utilização de uma mini-impressoras. 
 
+
 ## Utilizando JAR com as Dependencias:
+
 ### Integrando ao seu sistema
 
 Para utilizar as funções de impressão ou geração de PDF utilizando JARs, você precisa realizar os seguintes passos:
