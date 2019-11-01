@@ -44,10 +44,16 @@ public class PrinterNFCe {
     private final static Object nfeMapperLock = new Object();
 
     // Método que irá imprimir a NFC-e
-    public static void printNFCe(String path, PrinterParameters parameters, PrinterOptions printerOptions) throws Exception {
+    public static void printNFCe(String pathContent, PrinterParameters parameters, PrinterOptions printerOptions) throws Exception {
         System.out.print("\nComeçando a impressão...");
-        Object nfce = XMLToTNFe(path);
+        String content = new String(Files.readAllBytes(Paths.get(pathContent)));
+        Object nfce;
 
+        if (!pathContent.contains(".xml") && pathContent.contains(".json")) {
+            nfce = JSONToTNFe(content);
+        }else{
+            nfce = XMLToTNFe(content);
+        }
         if(!Objects.equals(nfce, null)){
 
             if (nfce.getClass().equals(TNFe.class)) {
@@ -88,19 +94,19 @@ public class PrinterNFCe {
             JOptionPane.showMessageDialog(null, "O XML informado não é uma NFCe, tente novamente");
         }
     }
-
+    
     // Método que gera uma NFC-e em PDF
-    public static void generatePDF(String path, String pathSavePDF, String pathLogo, NFCeJasperParameters parameters) throws Exception {
+    public static void generatePDF(String pathContent, String pathSavePDF, String pathLogo, NFCeJasperParameters parameters) throws Exception {
 
         System.out.print("Gerando PDF a partir de uma NFCe...\n");
         Object nfce;
         TNFe nota;
-        String content = new String(Files.readAllBytes(Paths.get(path)));
+        String content = new String(Files.readAllBytes(Paths.get(pathContent)));
 
-        if (!path.contains(".xml") && path.contains(".json")) {
+        if (!pathContent.contains(".xml") && pathContent.contains(".json")) {
             nfce = JSONToTNFe(content);
             content = TNFeToXML((TNFe) nfce).trim();
-        }else{
+        } else {
             nfce = XMLToTNFe(content);
         }
 
