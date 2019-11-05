@@ -43,9 +43,6 @@ Para realizar a impressão atraves de uma mini-impressora a partir de um XML ou 
 
 #### Parâmetros:
 
-            <item value="115200"/>
-            <item value="128000"/>
-            <item value="256000"/>
 Parametros   | Descrição
 :-----------:|:-----------
 operacao     | Qual a operação que deve ser feita:<ul><li>**IMPRIMIRNFCE**</li></ul>
@@ -71,8 +68,4 @@ A função de impressão de NFCe diretamente com uma mini-impressora fará a con
 
 ---------
 
-## Utilizando JAVA:
-### Integrando ao seu sistema
-#### Projeto Maven
-#### Utilizando JARs
 
